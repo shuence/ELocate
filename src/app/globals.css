@@ -864,6 +864,20 @@ body {
     width: 80%;
     height: 80%;
   }
+
+  .header .btn-outline {
+    display: block;
+    color: var(--go-green);
+    font-weight: var(--fw-600);
+    text-transform: uppercase;
+    border: none;
+    padding: 5px 18px;
+    transition: var(--transition-1);
+  }
+  
+  .header .btn-outline:is(:hover, :focus) {
+    color: var(--rich-black-fogra-29-1);
+  }
 }
 
 @media (min-width: 575px) {

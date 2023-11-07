@@ -38,7 +38,7 @@ const Header = () => {
 
   return (
     <header className={`header ${isHeaderActive ? "active" : ""}`} data-header>
-      <div className="container">
+      <div className="container shadow-md">
       <Link href="/">
           <Image
             src={logo}
