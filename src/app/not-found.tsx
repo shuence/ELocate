@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Navbar from "./Header/Navbar";
 import NotFound from "./Components/NotFound";
 
-const Page = () => {
+const NotFoundPage = () => {
   return (
     <>
       <Navbar />
@@ -14,7 +14,7 @@ const Page = () => {
         exit={{ opacity: 0, x: -20 }}
         transition={{ duration: 0.5 }}
       >
-        <div className="m-16 py-16 md:my-12 md:py-12">
+        <div className=" my-16 py-16 md:my-12 md:py-12">
           <NotFound />
         </div>
       </motion.div>
@@ -22,4 +22,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default NotFoundPage;
