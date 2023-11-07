@@ -14,7 +14,7 @@ const NotFoundPage = () => {
         exit={{ opacity: 0, x: -20 }}
         transition={{ duration: 0.5 }}
       >
-        <div className="my-16 flex items-center h-240 py-16 md:my-12 md:py-12">
+        <div className="my-16 flex justify-center items-center h-240 py-16 md:my-12 md:py-12">
           <NotFound />
         </div>
       </motion.div>
