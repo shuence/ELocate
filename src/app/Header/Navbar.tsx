@@ -15,6 +15,43 @@ interface NavItemProps {
 const Header = () => {
   const [isNavbarActive, setIsNavbarActive] = useState(false);
   const [isHeaderActive, setIsHeaderActive] = useState(false);
+  // Inside the component
+
+const [locations, setLocation] = useState('');
+
+useEffect(() => {
+  if (navigator.geolocation) {
+    const options = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0
+    };
+    
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+        
+        fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${lon},${lat}.json?access_token=pk.eyJ1Ijoic2h1ZW5jZSIsImEiOiJjbG9wcmt3czMwYnZsMmtvNnpmNTRqdnl6In0.vLBhYMBZBl2kaOh1Fh44Bw`)
+          .then(response => response.json())
+          .then(data => {
+            const city = data.features[0].context.find((context: { id: string | string[]; }) => context.id.includes('place')).text;
+            const state = data.features[0].context.find((context: { id: string | string[]; }) => context.id.includes('region')).text;
+            setLocation(`${city}, ${state}`);
+          })
+          .catch(error => {
+            console.error('Error:', error);
+          });
+      },
+      (error) => {
+        console.error(error);
+      },
+    );
+  } else {
+    console.error('Geolocation is not supported by this browser.');
+  }
+}, []);
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -76,9 +113,10 @@ const Header = () => {
           </ul>
         </nav>
 
-        <h1 className=' font-montserrat font-bold text-emerald-600 flex items-center gap-[1vh]'>
+        <h1 className=' font-montserrat font-bold text-xl md:text-2xl text-emerald-600 flex items-center gap-[1vh]'>
         <IonIcon icon={location} aria-hidden="true" role="img"></IonIcon>
-Location</h1>
+        {locations || 'Loading...'}
+</h1>
 
         <Link href="/login" className="btn-outline md:mr-8">
           Login
