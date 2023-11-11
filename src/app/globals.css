@@ -131,7 +131,7 @@ html {
 body {
   background-color: var(--white);
   color: var(--rich-black-fogra-29-1);
-  font-size: 1rem;
+  font-size: 0.7rem;
   line-height: 1.7;
 }
 
@@ -178,7 +178,7 @@ body {
 }
 
 .h1 {
-  font-size: var(--fs-2);
+  font-size: var(--fs-3);
   line-height: 1.1;
 }
 
@@ -198,6 +198,10 @@ body {
   justify-content: center;
   align-items: center;
   gap: 35px;
+}
+
+.text-go-green{
+  color: var(--go-green);
 }
 
 .btn {
@@ -221,10 +225,16 @@ body {
   border: 1px solid var(--go-green);
 }
 
-.btn-secondary:is(:hover, :focus) { background-color: var(--go-green); color: var(--white); }
+.btn-secondary:is(:hover, :focus) {
+  background-color: var(--go-green);
+  color: var(--white);
+  transform: translateY(-3px); /* Adjust the value for the desired amount of upward movement */
+}
 
-
-.btn-primary:is(:hover, :focus) { background-color: var(--rich-black-fogra-29-1); }
+.btn-primary:is(:hover, :focus) {
+  background-color: var(--rich-black-fogra-29-1);
+  transform: translateY(-3px); /* Adjust the value for the desired amount of upward movement */
+}
 
 .flex-btn {
   display: flex;
@@ -281,8 +291,8 @@ body {
   color: var(--go-green);
   font-weight: var(--fw-600);
   text-transform: uppercase;
-  border: 2px solid var(--go-green);
-  padding: 5px 18px;
+  border: 1px solid var(--go-green);
+  padding: 7px 18px;
   transition: var(--transition-1);
 }
 
@@ -454,6 +464,7 @@ body {
   transform: translate(-50%, -50%);
   width: 120%;
   height: 120%;
+  background-image: url("../assets/hero-pattern.svg");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -469,6 +480,7 @@ body {
   transform: translate(-50%, -50%);
   width: 90%;
   height: 100%;
+  background-image: url("../assets/hero-pattern.svg");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -859,27 +871,6 @@ body {
  * responsive for large than 575px screen
  */
 
-@media (max-width: 768px) {
-  .logo{
-    width: 80%;
-    height: 80%;
-  }
-
-  .header .btn-outline {
-    display: block;
-    color: var(--go-green);
-    font-weight: var(--fw-600);
-    text-transform: uppercase;
-    border: none;
-    padding: 5px 18px;
-    transition: var(--transition-1);
-  }
-  
-  .header .btn-outline:is(:hover, :focus) {
-    color: var(--rich-black-fogra-29-1);
-  }
-}
-
 @media (min-width: 575px) {
 
   /**
@@ -969,9 +960,6 @@ body {
   /**
    * REUSED STYLE
    */
-
-
- 
    
 
   .container { max-width: 720px; }
