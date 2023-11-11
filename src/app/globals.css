@@ -231,12 +231,12 @@ body {
 .btn-secondary:is(:hover, :focus) {
   background-color: var(--go-green);
   color: var(--white);
-  transform: translateY(-3px); /* Adjust the value for the desired amount of upward movement */
+  transform: translateY(-3px); 
 }
 
 .btn-primary:is(:hover, :focus) {
   background-color: var(--rich-black-fogra-29-1);
-  transform: translateY(-3px); /* Adjust the value for the desired amount of upward movement */
+  transform: translateY(-3px); 
 }
 
 .flex-btn {

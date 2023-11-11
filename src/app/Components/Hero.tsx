@@ -57,7 +57,7 @@ const HeroSection: React.FC = () => {
           ELocate: Transforming E-Waste Management. Find E-waste facilities effortlessly with our platform. Your key to responsible recycling and sustainability.
           </p>
 
-          <div className="flex flex-col md:flex-row items-center justify-center md:justify-start space-y-4 sm:space-y-0 md:space-x-4 mb-10">
+          <div className="flex flex-row md:flex-row items-center justify-center md:justify-start sm:space-y-0 md:space-x-4 mb-10">
             <Link href="/explore" className="btn btn-primary mr-4">
               Start Recycling
             </Link>

@@ -113,12 +113,12 @@ useEffect(() => {
           </ul>
         </nav>
 
-        <h1 className='font-montserrat font-bold text-xl ml-4 md:ml-4 md:text-2xl text-emerald-600 flex items-center gap-[1vh]'>
+        <h1 className='font-montserrat font-bold text-xl ml-12 md:ml-4 md:text-2xl text-emerald-600 flex items-center gap-[1vh]'>
         <IonIcon icon={location} aria-hidden="true" role="img"></IonIcon>
         {locations || 'Loading...'}
 </h1>
 
-        <Link href="/login" className="btn-outline md:mr-8">
+        <Link href="/login" className="btn-outline mr-8">
           Login
         </Link>
 
