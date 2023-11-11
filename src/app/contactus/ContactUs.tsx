@@ -15,12 +15,6 @@ import emailjs from "@emailjs/browser";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-interface FormData {
-  name: string;
-  email: string;
-  phone: string;
-  message: string;
-}
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({

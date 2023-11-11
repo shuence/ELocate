@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { IonIcon } from "@ionic/react";
 import { paperPlane } from "ionicons/icons";
 import { location } from "ionicons/icons";
@@ -12,11 +12,64 @@ import { logoWhatsapp } from "ionicons/icons";
 import logo from "../../assets/ELocate-s.png";
 import Link from "next/link";
 import Image from "next/image";
+import emailjs from "@emailjs/browser";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Footer = () => {
+  const [formData, setFormData] = useState({
+    email: "",
+  });
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    } as Pick<typeof formData, keyof typeof formData>);
+    ;
+  };
+
+  const SendMsg = (e: React.FormEvent) => {
+    e.preventDefault();
+    const templateParams = {
+      email: formData.email,
+    };
+
+    emailjs
+      .send(
+        "service_jqn5flv",
+        "template_ppph1w9",
+        templateParams,
+        "ddYcz13MvW01UFF5u"
+      )
+      .then((result: { text: any }) => {
+        setFormData({
+          email: "",
+        });
+        toast.success("Email Submitted Successfully");
+      })
+      .catch((error: { text: any }) => {
+        toast.error("Something Went Wrong");
+      });
+  };
   return (
     <footer className="footer projects">
       <div className="footer-top md:section">
+      <ToastContainer
+        className="text-2xl"
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
         <div className="container">
           <div className="footer-brand">
             <Link href="/">
@@ -31,13 +84,15 @@ const Footer = () => {
             <p className="footer-text">
             ELocate: Transforming E-Waste Management. Find E-waste facilities effortlessly with our platform. Your key to responsible recycling and sustainability.
             </p>
-            <form action="" className="newsletter-form mb-0 md:mb-4">
+            <form onSubmit={SendMsg} className="newsletter-form mb-0 md:mb-4">
               <input
                 type="email"
-                name="email_address"
+                name="email"
                 placeholder="Enter your email"
-                required
                 className="email-field"
+                value={formData.email}
+                onChange={handleInputChange}
+                required
               />
               <button
                 type="submit"

@@ -41,6 +41,9 @@
   --fs-10: 1.5rem;
   --fs-11: 1.4rem;
   --fs-12: 1.3rem;
+  --fs-14: 1.2rem;
+  --fs-15: 1.1rem;
+  --fs-16: 1rem;
 
   --fw-600: 600;
   --fw-500: 500;
@@ -758,7 +761,7 @@ body {
 
 .email-field {
   color: var(--rich-black-fogra-29-1);
-  font-size: var(--fs-11);
+  font-size: var(--fs-14);
   border: 1px solid var(--granite-gray);
   padding: 15px;
   border-radius: var(--radius-5);
