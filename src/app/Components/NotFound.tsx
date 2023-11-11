@@ -12,7 +12,7 @@ const NotFound = () => {
           Oops! The page you are looking for will soon available.
         </div>
         <Link href="/">
-          <p className="bg-emerald-500 text-white font-bold py-3 px-6 mt-8 rounded-full hover:bg-white-700">
+          <p className="bg-emerald-500 text-white font-bold text-xl py-3 px-6 mt-8 rounded-full hover:bg-white-700">
             Go Back to Home
           </p>
         </Link>

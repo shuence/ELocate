@@ -54,9 +54,7 @@ const HeroSection: React.FC = () => {
           </h1>
 
           <p className="text-gray-700 mb-8 text-center md:text-start">
-            Quartet StudioZ offers end-to-end solutions for your online
-            presence, including website design, modern UI/UX practices, and
-            digital marketing services.
+          ELocate: Transforming E-Waste Management. Find E-waste facilities effortlessly with our platform. Your key to responsible recycling and sustainability.
           </p>
 
           <div className="flex flex-col md:flex-row items-center justify-center md:justify-start space-y-4 sm:space-y-0 md:space-x-4 mb-10">

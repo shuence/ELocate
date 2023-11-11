@@ -1,9 +1,11 @@
 "use client";
 import React from "react";
+import Navbar from "../Header/Navbar";
 import { motion } from "framer-motion";
-import NotFound from "./Components/NotFound";
+import Footer from "../Footer/Footer";
+import ContactUs from "./ContactUs";
 
-const NotFoundPage = () => {
+const Page = () => {
   return (
     <>
       <motion.div
@@ -12,12 +14,12 @@ const NotFoundPage = () => {
         exit={{ opacity: 0, x: -20 }}
         transition={{ duration: 0.5 }}
       >
-        <div className="my-16 flex justify-center items-center h-240 py-16 md:my-12 md:py-12">
-          <NotFound />
+        <div className="my-4 py-8">
+          <ContactUs />
         </div>
       </motion.div>
     </>
   );
 };
 
-export default NotFoundPage;
+export default Page;

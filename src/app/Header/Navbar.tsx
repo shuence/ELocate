@@ -107,9 +107,9 @@ useEffect(() => {
           <ul className="navbar-list">
             <NavItem label="Home" />
             <NavItem label="About" />
-            <NavItem label="Facilities" />
+            <NavItem label="E-Facilities" />
             <NavItem label="Education" />
-            <NavItem label="Contact" />
+            <NavItem label="Contactus" />
           </ul>
         </nav>
 

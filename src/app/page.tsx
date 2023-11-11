@@ -7,7 +7,6 @@ import NotFoundPage from "./not-found";
 export default function App() {
   return (
     <>
-      <Navbar />
       <Home/>
     </>
   );
