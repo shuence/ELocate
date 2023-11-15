@@ -220,7 +220,7 @@ const Footer = () => {
                   <Link
                     target="_blank"
                     rel="noopener noreferrer"
-                    href="https://www.linkedin.com/company/quartetstudioz"
+                    href="/"
                     className="social-link"
                   >
                     <IonIcon icon={logoLinkedin}></IonIcon>
@@ -230,7 +230,7 @@ const Footer = () => {
                   <Link
                     target="_blank"
                     rel="noopener noreferrer"
-                    href="https://www.instagram.com/quartetstudioz/"
+                    href="/"
                     className="social-link"
                   >
                     <IonIcon icon={logoInstagram}></IonIcon>
@@ -240,7 +240,7 @@ const Footer = () => {
                   <Link
                     target="_blank"
                     rel="noopener noreferrer"
-                    href="https://twitter.com/QStudioz78571"
+                    href="/"
                     className="social-link"
                   >
                     <IonIcon icon={logoTwitter}></IonIcon>
@@ -250,7 +250,7 @@ const Footer = () => {
                   <Link
                     target="_blank"
                     rel="noopener noreferrer"
-                    href="https://api.whatsapp.com/send?phone=918766539293&text=Hello"
+                    href="/"
                     className="social-link"
                   >
                     <IonIcon icon={logoWhatsapp}></IonIcon>

@@ -14,6 +14,7 @@ import Link from "next/link";
 import emailjs from "@emailjs/browser";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Head from "next/head";
 
 
 const ContactUs = () => {
@@ -65,7 +66,8 @@ const ContactUs = () => {
   };
 
   return (
-    <div className="px-4 w-full py-16 lg:py-24 md:pb-32 md:container">
+    <><Head>
+     <title>ELocate- ContactUs</title> </Head><div className="px-4 w-full py-16 lg:py-24 md:pb-32 md:container">
       <ToastContainer
         className="text-2xl"
         position="top-right"
@@ -77,8 +79,7 @@ const ContactUs = () => {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme="dark"
-      />
+        theme="dark" />
 
       <div className="flex flex-col items-center justify-center px-10">
         <div className="text-black section-subtitle text-center font-bold text-2xl md:text-4xl 2xl:text-6xl uppercase tracking-widest teamHeadingText">
@@ -113,8 +114,7 @@ const ContactUs = () => {
                   className="email-field"
                   value={formData.name}
                   onChange={handleInputChange}
-                  required
-                />
+                  required />
               </div>
               <div className="mb-4">
                 <label
@@ -130,8 +130,7 @@ const ContactUs = () => {
                   className="email-field"
                   value={formData.email}
                   onChange={handleInputChange}
-                  required
-                />
+                  required />
               </div>
               <div className="mb-4">
                 <label
@@ -147,8 +146,7 @@ const ContactUs = () => {
                   className="email-field"
                   value={formData.phone}
                   onChange={handleInputChange}
-                  required
-                />
+                  required />
               </div>
               <div className="mb-6">
                 <label
@@ -216,7 +214,7 @@ const ContactUs = () => {
                     <Link
                       target="_blank"
                       rel="noopener noreferrer"
-                      href="https://www.linkedin.com/company/quartetstudioz"
+                      href="/"
                       className="social-link"
                     >
                       <IonIcon icon={logoLinkedin}></IonIcon>
@@ -226,7 +224,7 @@ const ContactUs = () => {
                     <Link
                       target="_blank"
                       rel="noopener noreferrer"
-                      href="https://www.instagram.com/quartetstudioz/"
+                      href="/"
                       className="social-link"
                     >
                       <IonIcon icon={logoInstagram}></IonIcon>
@@ -236,7 +234,7 @@ const ContactUs = () => {
                     <Link
                       target="_blank"
                       rel="noopener noreferrer"
-                      href="https://twitter.com/QStudioz78571"
+                      href="/"
                       className="social-link"
                     >
                       <IonIcon icon={logoTwitter}></IonIcon>
@@ -246,7 +244,7 @@ const ContactUs = () => {
                     <Link
                       target="_blank"
                       rel="noopener noreferrer"
-                      href="https://api.whatsapp.com/send?phone=918766539293&text=Hello"
+                      href="/"
                       className="social-link"
                     >
                       <IonIcon icon={logoWhatsapp}></IonIcon>
@@ -258,7 +256,7 @@ const ContactUs = () => {
           </div>
         </div>
       </div>
-    </div>
+    </div></>
   );
 };
 
