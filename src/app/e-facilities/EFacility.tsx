@@ -6,9 +6,6 @@ interface FacilityInfo {
   capacity: string;
 }
 
-interface FacilityMapProps {
-  facilityInfo: FacilityInfo;
-}
 
 const FacilityData = [
   { name: "Facility 1", capacity: "100", lat: [75.3433], lon: [19.8762] },
@@ -16,7 +13,7 @@ const FacilityData = [
   { name: "Facility 3", capacity: "80", lat: [75.3433], lon: [19.8762] },
 ];
 
-const FacilityMap: React.FC<FacilityMapProps> = ({ facilityInfo }) => {
+const FacilityMap: React.FC = () => {
   const mapboxToken =
     "pk.eyJ1Ijoic2h1ZW5jZSIsImEiOiJjbG9wcmt3czMwYnZsMmtvNnpmNTRqdnl6In0.vLBhYMBZBl2kaOh1Fh44Bw";
   const Map = ReactMapboxGl({
