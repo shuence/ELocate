@@ -42,7 +42,7 @@ const FacilityMap = () => {
         container: "map",
         style: "mapbox://styles/mapbox/streets-v11",
         center: clientLocation,
-        zoom: 8,
+        zoom: 10,
       });
 
       facilityData.forEach((facility) => {
