@@ -47,8 +47,7 @@ const FacilityMap = () => {
 
       facilityData.forEach((facility) => {
         fetch(
-          `https://api.opencagedata.com/geocode/v1/json?q=${facility.lat}+${facility.lon}&key=a073956f825a480cb0571f2df6edef03`
-        
+          `https://api.mapbox.com/geocoding/v5/mapbox.places/${facility.lon},${facility.lat}.json?access_token=${mapboxgl.accessToken}`
         )
           .then((response) => response.json())
           .then((data) => {
