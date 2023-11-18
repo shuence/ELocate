@@ -15,9 +15,12 @@ const config: Config = {
       },
       spacing: {
         '128': '32rem',
+        '200': '50rem',
+        '240': '60rem',
       },
       height: {
         '128': '32rem',
+        '200': '50rem',
         '240': '60rem',
       }
     },
