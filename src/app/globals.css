@@ -281,8 +281,16 @@ body {
   transition: var(--transition-1);
 }
 
+#map{
+  height: 500px;
+  width: 100%;
+}
 
-
+@media (max-width: 760px) {
+  #map{
+    width: 95%;
+  }
+}
 
 
 /*-----------------------------------*\

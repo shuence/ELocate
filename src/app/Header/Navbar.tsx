@@ -46,6 +46,7 @@ useEffect(() => {
       (error) => {
         console.error(error);
       },
+      options  
     );
   } else {
     console.error('Geolocation is not supported by this browser.');
