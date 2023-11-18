@@ -17,6 +17,7 @@
     "nextjs-toploader": "^1.6.4",
     "react": "^18",
     "react-dom": "^18",
+    "react-map-gl": "^7.1.6",
     "react-mapbox-gl": "^5.1.1",
     "react-toastify": "^9.1.3"
   },

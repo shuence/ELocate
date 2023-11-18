@@ -1,16 +1,18 @@
 import React, { useEffect } from "react";
-import ReactMapboxGl, { Layer, Feature } from "react-mapbox-gl";
+import ReactMapboxGl, { Layer, Feature, Marker } from "react-mapbox-gl";
+import "mapbox-gl/dist/mapbox-gl.css";
 
 interface FacilityInfo {
   name: string;
   capacity: string;
+  lat: number;
+  lon: number;
 }
 
-
-const FacilityData = [
-  { name: "Facility 1", capacity: "100", lat: [75.3433], lon: [19.8762] },
-  { name: "Facility 2", capacity: "150", lat: [75.3433], lon: [19.8762] },
-  { name: "Facility 3", capacity: "80", lat: [75.3433], lon: [19.8762] },
+const FacilityData: FacilityInfo[] = [
+  { name: "Facility 1", capacity: "100", lat: 75.3433, lon: 19.8762 },
+  { name: "Facility 2", capacity: "150", lat: 75.3533, lon: 19.8862 },
+  { name: "Facility 3", capacity: "80", lat: 75.3633, lon: 19.8962 },
 ];
 
 const FacilityMap: React.FC = () => {
@@ -30,18 +32,18 @@ const FacilityMap: React.FC = () => {
 
   return (
     <div className="flex section my-8">
-      <div className="w-1/3 flex flex-col p-4">
+      <div className="w-1/3 flex flex-col m-4 shadow-lg">
         {FacilityData.map((info, index) => (
           <div key={index} className="w-1/3 p-4">
             <h2 className="text-xl font-semibold">{info.name}</h2>
             <p className="text-gray-600">{info.capacity}</p>
-            <p className="text-gray-600">{info.lat}</p>
-            <p className="text-gray-600">{info.lon}</p>
+            <p className="text-gray-600">Latitude: {info.lat}</p>
+            <p className="text-gray-600">Longitude: {info.lon}</p>
           </div>
         ))}
       </div>
 
-      <div className="w-4/5">
+      <div className="w-4/5 m-4 shadow-lg">
         <Map
           style={mapStyle}
           containerStyle={{
@@ -51,13 +53,14 @@ const FacilityMap: React.FC = () => {
           center={defaultCenter}
           zoom={defaultZoom}
         >
-          <Layer
-            type="symbol"
-            id="marker"
-            layout={{ "icon-image": "marker-15" }}
-          >
-            <Feature coordinates={defaultCenter} />
-          </Layer>
+          {FacilityData.map((info, index) => (
+            <Marker
+              key={index}
+              coordinates={[info.lat, info.lon]}
+              anchor="bottom"
+              style={{ width: "20px", height: "20px", background: "red", borderRadius: "50%" }}
+              />
+          ))}
         </Map>
       </div>
     </div>
