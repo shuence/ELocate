@@ -42,7 +42,7 @@ const HeroSection: React.FC = () => {
           <h1 className="h1 hero-title text-center md:text-start font-bold mb-6">
             Your technology partner for Innovative and Impactful 
             <br /> <motion.span
-            className="text-go-green"
+            className="text-go-green pt-2"
               variants={solutionVariants}
               initial="initial"
               animate="animate"
@@ -61,7 +61,7 @@ const HeroSection: React.FC = () => {
             <Link href="/explore" className="btn btn-primary mr-4">
               Start Recycling
             </Link>
-            <Link href="/search" className="btn btn-primary mr-4">
+            <Link href="/e-facilities" className="btn btn-primary mr-4">
               Locate Facility
             </Link>
 
