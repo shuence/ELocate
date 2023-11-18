@@ -52,8 +52,12 @@ const FacilityMap = () => {
           .then((response) => response.json())
           .then((data) => {
             const address = data.features[0]?.place_name || "Address not available";
-            setAddresses((prevAddresses) => [...prevAddresses, address]);
-            console.log(address)
+const uniqueWords = [...new Set(address.split(', '))];
+const newAddress = uniqueWords.join(', ');
+
+console.log(address);
+            setAddresses((prevAddresses) => [...prevAddresses, newAddress]);
+            console.log(newAddress)
             const popup = new mapboxgl.Popup().setHTML(
               `<h3>${facility.name}</h3>
               <p>Capacity: ${facility.capacity}</p>
