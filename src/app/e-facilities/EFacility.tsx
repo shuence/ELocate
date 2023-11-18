@@ -63,7 +63,7 @@ console.log(newAddress);
             const popup = new mapboxgl.Popup().setHTML(
               `<h3>${facility.name}</h3>
               <p>Capacity: ${facility.capacity}</p>
-              <p>Address: ${address}</p>`
+              <p>Address: ${newAddress}</p>`
             );
 
             new mapboxgl.Marker()
