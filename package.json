@@ -2,7 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "engine":"18.17.0",
+  "engine": "18.17.0",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -13,6 +13,7 @@
     "@emailjs/browser": "^3.11.0",
     "@ionic/react": "^7.5.0",
     "@mapbox/mapbox-gl-directions": "^4.1.1",
+    "@mapbox/mapbox-gl-geocoder": "^5.0.1",
     "axios": "^1.6.2",
     "framer-motion": "^10.16.4",
     "mapbox-gl": "^2.15.0",
@@ -25,6 +26,7 @@
   },
   "devDependencies": {
     "@types/mapbox-gl": "^2.7.18",
+    "@types/mapbox__mapbox-gl-geocoder": "^4.7.7",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

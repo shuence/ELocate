@@ -5,6 +5,8 @@ import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
 import "mapbox-gl/dist/mapbox-gl.css";
 import getLocation from "../utils/getLocation";
 import { calculateDistance } from "../utils/calculateLocation";
+import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
+import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import Link from "next/link";
 
 interface Facility {
@@ -172,6 +174,60 @@ const FacilityMap: React.FC = () => {
       });
 
       mapRef.current = map;
+      const geocoder = new MapboxGeocoder({
+        accessToken: mapboxgl.accessToken,
+        mapboxgl: mapboxgl,
+      });
+  
+      map.addControl(geocoder);
+
+      // ... (inside the useEffect where the map is initialized)
+
+      geocoder.on("result", (event: { result: { geometry: any; place_name: any; }; }) => {
+        const { geometry, place_name } = event.result;
+      
+        if (geometry && geometry.coordinates) {
+          const center = geometry.coordinates;
+
+          const selectedLocationMarker = new mapboxgl.Marker().setLngLat(center).addTo(map);
+      
+          const popup = new Popup().setHTML(
+            `<h3 class="font-bold text-emerald-600 text-2xl">Selected Location</h3>
+            <p>Address: ${place_name || "Address not available"}</p>`
+          );
+      
+          selectedLocationMarker.setPopup(popup);
+
+      
+          // Find the nearest facility
+          let nearestFacility = facility[0];
+          let nearestDistance = calculateDistance(
+            center[1],
+            center[0],
+            facility[0].lat,
+            facility[0].lon
+          );
+      
+          facility.forEach((facility) => {
+            const distance = calculateDistance(
+              center[1],
+              center[0],
+              facility.lat,
+              facility.lon
+            );
+      
+            if (distance < nearestDistance) {
+              nearestFacility = facility;
+              nearestDistance = distance;
+            }
+          });
+          getDirections(center, [nearestFacility.lon, nearestFacility.lat]);
+        }
+      });
+      
+      
+      map.addControl(new mapboxgl.NavigationControl(), "bottom-right");
+
 
       const userMarker = new mapboxgl.Marker({ color: "#256dd9" })
         .setLngLat(clientLocation)
@@ -252,16 +308,18 @@ const FacilityMap: React.FC = () => {
       const response = await fetch(
         `https://api.mapbox.com/directions/v5/mapbox/walking/${origin[0]},${origin[1]};${destination[0]},${destination[1]}?alternatives=true&continue_straight=true&geometries=geojson&language=en&overview=full&steps=true&access_token=${mapboxgl.accessToken}`
       );
-
+  
       const data = await response.json();
-
+  
       if (data.code === "Ok" && mapRef.current) {
+        const distanceInKm = data.routes[0].distance / 1000;
+  
         const directionsLayerId = "directions";
         if (mapRef.current.getLayer(directionsLayerId)) {
           mapRef.current.removeLayer(directionsLayerId);
           mapRef.current.removeSource(directionsLayerId);
         }
-
+  
         mapRef.current.addSource(directionsLayerId, {
           type: "geojson",
           data: {
@@ -270,7 +328,7 @@ const FacilityMap: React.FC = () => {
             geometry: data.routes[0].geometry,
           },
         });
-
+  
         mapRef.current.addLayer({
           id: directionsLayerId,
           type: "line",
@@ -285,36 +343,28 @@ const FacilityMap: React.FC = () => {
             "line-opacity": 0.75,
           },
         });
-
+  
         const bounds = new mapboxgl.LngLatBounds();
         data.routes[0].geometry.coordinates.forEach((coord: [number, number]) =>
           bounds.extend(coord)
         );
-        mapRef.current.fitBounds(bounds, { padding: 20 });
+        mapRef.current.fitBounds(bounds, { padding: 20 });  
 
-        {
-          /**  const distanceInKm = data.routes[0].distance / 1000;
-  
-      const routePopup = new mapboxgl.Popup({
+        const routePopup = new mapboxgl.Popup({
           closeButton: false,
           closeOnClick: false,
           offset: 25,
-          className: 'w-40 h-8',
+          className: 'h-8',
         })
           .setLngLat(data.routes[0].geometry.coordinates[0])
-          .setHTML(`<p class="text-lg">Distance: ${distanceInKm.toFixed(2)} km away</p>`)
+          .setHTML(`<p class="text-lg">Distance to Nearest Facility: ${distanceInKm.toFixed(2)} km</p>`)
           .addTo(mapRef.current);
-  
-        // Close the popup when the route is clicked
-        mapRef.current.on('click', directionsLayerId, () => {
-          routePopup.remove();
-        }); **/
-        }
       }
     } catch (error) {
       console.error("Error fetching directions:", error);
     }
   };
+  
 
   useEffect(() => {
     if (
