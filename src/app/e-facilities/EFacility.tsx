@@ -207,10 +207,19 @@ const FacilityMap: React.FC = () => {
   
             marker.getElement().addEventListener('click', () => {
             
-              setSelectedFacility(index);            
-            });      
-  
-            popup.on('open', () => {
+              const popup = marker.getPopup();
+              if (popup) {
+                if (popup.isOpen()) {
+                  popup.remove();
+                } else {
+                  popup.addTo(mapRef.current!);
+                }
+              }
+      
+              setSelectedFacility(index);
+      
+            });
+           popup.on('open', () => {
               const directionsBtn = document.getElementById(`directionsBtn${index}`);
               if (directionsBtn) {
                 directionsBtn.addEventListener('click', () => {
@@ -218,7 +227,8 @@ const FacilityMap: React.FC = () => {
                 });
               }
             });
-          });
+          });      
+  
         })
         .catch((error) => console.error("Error fetching addresses:", error));
   
@@ -295,27 +305,38 @@ const FacilityMap: React.FC = () => {
   };
   
 
-
   useEffect(() => {
-    if (selectedFacility !== null && cardContainerRef.current && mapRef.current && markersRef.current) {
-      
+    if (selectedFacility !== null && cardContainerRef.current && mapRef.current) {
+      cardContainerRef.current.scrollTo({
+        top: selectedFacility * 120,
+        behavior: "smooth",
+      });
+    }
+  }, [selectedFacility]);
+  
+  
+  
+  
+  useEffect(() => {
+    if (selectedFacility !== null && mapRef.current && markersRef.current) {
       const selectedMarker = markersRef.current[selectedFacility];
       const selectedMarkerLngLat = selectedMarker.getLngLat();
-
+  
       mapRef.current.flyTo({
         center: selectedMarkerLngLat!,
         essential: true,
       });
-
+  
       markersRef.current.forEach((marker, index) => {
         marker.getElement().addEventListener('click', () => {
           setSelectedFacility(index);
         });
       });
-
+  
       selectedMarker.getElement().click();
     }
   }, [selectedFacility]);
+  
 
  
 
