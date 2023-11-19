@@ -1,10 +1,11 @@
-"use client"
+"use client";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import mapboxgl, { Map, Popup } from "mapbox-gl";
 import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
 import "mapbox-gl/dist/mapbox-gl.css";
 import getLocation from "../utils/getLocation";
 import { calculateDistance } from "../utils/calculateLocation";
+import Link from "next/link";
 
 interface Facility {
   distance: number;
@@ -16,7 +17,6 @@ interface Facility {
   time: string;
   verified: boolean;
 }
-
 
 const FacilityMap: React.FC = () => {
   const facility = useMemo(
@@ -99,7 +99,9 @@ const FacilityMap: React.FC = () => {
 
   const [facilityData, setFacilityData] = useState<Facility[]>([]);
   const [addresses, setAddresses] = useState<string[]>([]);
-  const [clientLocation, setClientLocation] = useState<[number, number] | null>(null);
+  const [clientLocation, setClientLocation] = useState<[number, number] | null>(
+    null
+  );
   const [selectedFacility, setSelectedFacility] = useState<number | null>(null);
   const cardContainerRef = useRef<HTMLDivElement>(null);
   const mapContainerRef = useRef<HTMLDivElement>(null);
@@ -108,7 +110,8 @@ const FacilityMap: React.FC = () => {
   const userMarkerRef = useRef<mapboxgl.Marker | null>(null);
 
   useEffect(() => {
-    mapboxgl.accessToken = "pk.eyJ1Ijoic2h1ZW5jZSIsImEiOiJjbG9wcmt3czMwYnZsMmtvNnpmNTRqdnl6In0.vLBhYMBZBl2kaOh1Fh44Bw";
+    mapboxgl.accessToken =
+      "pk.eyJ1Ijoic2h1ZW5jZSIsImEiOiJjbG9wcmt3czMwYnZsMmtvNnpmNTRqdnl6In0.vLBhYMBZBl2kaOh1Fh44Bw";
 
     getLocation().then((coordinates) => {
       if (coordinates) {
@@ -128,13 +131,13 @@ const FacilityMap: React.FC = () => {
           );
           const data = await response.json();
           const address =
-          data.features[0]?.place_name || "Address not available";
-        const uniqueWordsSet = new Set(address.split(", "));
-        const uniqueWordsArray = Array.from(uniqueWordsSet);
-        const newAddress = uniqueWordsArray.join(", ");
+            data.features[0]?.place_name || "Address not available";
+          const uniqueWordsSet = new Set(address.split(", "));
+          const uniqueWordsArray = Array.from(uniqueWordsSet);
+          const newAddress = uniqueWordsArray.join(", ");
 
-        setAddresses((prevAddresses) => [...prevAddresses, newAddress]);
-        return newAddress;
+          setAddresses((prevAddresses) => [...prevAddresses, newAddress]);
+          return newAddress;
         })
       );
 
@@ -158,51 +161,57 @@ const FacilityMap: React.FC = () => {
           ),
         }))
         .sort((a, b) => a.distance - b.distance);
-  
+
       setFacilityData(sortedFacilities);
-  
+
       const map = new mapboxgl.Map({
         container: mapContainerRef.current!,
         style: "mapbox://styles/mapbox/streets-v11",
         center: clientLocation,
         zoom: 10,
       });
-  
+
       mapRef.current = map;
-  
+
       const userMarker = new mapboxgl.Marker({ color: "#256dd9" })
         .setLngLat(clientLocation)
         .addTo(map);
-  
+
       userMarkerRef.current = userMarker;
-  
+
       getAddress(sortedFacilities)
         .then((newAddress) => {
           setAddresses(newAddress);
-  
+
           sortedFacilities.forEach((facility, index) => {
             const popup = new Popup().setHTML(
-              `<h3 class="font-bold text-emerald-600 text-2xl">${facility.name}</h3>
+              `<h3 class="font-bold text-emerald-600 text-2xl">${
+                facility.name
+              }</h3>
               <p>Capacity: ${facility.capacity}</p>
               <p>Address: ${newAddress[index]}</p>
               <p class="text-gray-600">Contact: ${facility.contact}</p>
               <p class="text-gray-600">Time: ${facility.time}</p>
-              <p class="text-gray-600 ">Distance: ${facility.distance.toFixed(2)} km away</p>
+              <p class="text-gray-600 ">Distance: ${facility.distance.toFixed(
+                2
+              )} km away</p>
               `
             );
-  
-            const marker = new mapboxgl.Marker({ color: selectedFacility === index ? "#02703f" : "#22b371" })
+
+            const marker = new mapboxgl.Marker({
+              color: selectedFacility === index ? "#02703f" : "#22b371",
+            })
               .setLngLat([facility.lon, facility.lat])
               .setPopup(popup);
-  
+
             markersRef.current.push(marker);
-  
+
             marker.addTo(map);
-  
-            marker.getElement().addEventListener('click', () => {
+
+            marker.getElement().addEventListener("click", () => {
               const marker = markersRef.current[index];
               const popup = marker.getPopup();
-              
+
               if (popup) {
                 if (popup.isOpen()) {
                   popup.remove();
@@ -211,38 +220,49 @@ const FacilityMap: React.FC = () => {
                 }
               }
               setSelectedFacility(index);
-            });   
-        
-            popup.on('close', () => {
+            });
+
+            const directionsBtn = document.getElementById(
+              `directionsBtn${index}`
+            );
+            console.log("Clicked on directionbtn:", directionsBtn);
+            if (directionsBtn) {
+              directionsBtn.addEventListener("click", () => {
+                getDirections(clientLocation!, [facility.lon, facility.lat]);
+              });
+            }
+
+            popup.on("close", () => {
               setSelectedFacility(null);
             });
-          });      
-  
+          });
         })
         .catch((error) => console.error("Error fetching addresses:", error));
-  
+
       return () => {
         map.remove();
       };
     }
   }, [clientLocation, facility, selectedFacility]);
-  
 
-  const getDirections = async (origin: [number, number], destination: [number, number]) => {
+  const getDirections = async (
+    origin: [number, number],
+    destination: [number, number]
+  ) => {
     try {
       const response = await fetch(
         `https://api.mapbox.com/directions/v5/mapbox/walking/${origin[0]},${origin[1]};${destination[0]},${destination[1]}?alternatives=true&continue_straight=true&geometries=geojson&language=en&overview=full&steps=true&access_token=${mapboxgl.accessToken}`
       );
-  
+
       const data = await response.json();
-  
+
       if (data.code === "Ok" && mapRef.current) {
         const directionsLayerId = "directions";
         if (mapRef.current.getLayer(directionsLayerId)) {
           mapRef.current.removeLayer(directionsLayerId);
           mapRef.current.removeSource(directionsLayerId);
         }
-  
+
         mapRef.current.addSource(directionsLayerId, {
           type: "geojson",
           data: {
@@ -251,7 +271,7 @@ const FacilityMap: React.FC = () => {
             geometry: data.routes[0].geometry,
           },
         });
-  
+
         mapRef.current.addLayer({
           id: directionsLayerId,
           type: "line",
@@ -266,12 +286,15 @@ const FacilityMap: React.FC = () => {
             "line-opacity": 0.75,
           },
         });
-  
+
         const bounds = new mapboxgl.LngLatBounds();
-        data.routes[0].geometry.coordinates.forEach((coord: [number, number]) => bounds.extend(coord));
+        data.routes[0].geometry.coordinates.forEach((coord: [number, number]) =>
+          bounds.extend(coord)
+        );
         mapRef.current.fitBounds(bounds, { padding: 20 });
-  
-      {/**  const distanceInKm = data.routes[0].distance / 1000;
+
+        {
+          /**  const distanceInKm = data.routes[0].distance / 1000;
   
       const routePopup = new mapboxgl.Popup({
           closeButton: false,
@@ -286,86 +309,97 @@ const FacilityMap: React.FC = () => {
         // Close the popup when the route is clicked
         mapRef.current.on('click', directionsLayerId, () => {
           routePopup.remove();
-        }); **/}
+        }); **/
+        }
       }
     } catch (error) {
       console.error("Error fetching directions:", error);
     }
   };
-  
 
   useEffect(() => {
-    if (selectedFacility !== null && cardContainerRef.current && mapRef.current) {
+    if (
+      selectedFacility !== null &&
+      cardContainerRef.current &&
+      mapRef.current
+    ) {
       cardContainerRef.current.scrollTo({
         top: selectedFacility * 120,
         behavior: "smooth",
       });
     }
   }, [selectedFacility]);
-  
-  
-  
-  
+
   useEffect(() => {
     if (selectedFacility !== null && mapRef.current && markersRef.current) {
       const selectedMarker = markersRef.current[selectedFacility];
       const selectedMarkerLngLat = selectedMarker.getLngLat();
-  
+
       mapRef.current.flyTo({
         center: selectedMarkerLngLat!,
         essential: true,
       });
-  
+
       markersRef.current.forEach((marker, index) => {
-        marker.getElement().addEventListener('click', () => {
+        marker.getElement().addEventListener("click", () => {
           setSelectedFacility(index);
         });
       });
-  
+
       selectedMarker.getElement().click();
     }
   }, [selectedFacility]);
-  
-
- 
 
   return (
-    <div className="flex flex-col-reverse md:flex-row section my-2 md:my-8">
-    <div
-      ref={cardContainerRef}
-      className="flex flex-col md:w-1/3 m-4 shadow-lg max-h-200 overflow-y-auto"
-    >
-      {facilityData.map((info, index) => (
-        <div
-        key={index}
-        className={`p-4 bg-white rounded-md border border-gray-300 cursor-pointer mb-4 
-        ${selectedFacility === index ? "bg-green-200" : ""}`}
-        onClick={() => {
-          console.log("Clicked on facility index:", index);
-          setSelectedFacility(index);
-        }}
+    <div className="flex flex-col-reverse md:flex-row pt-24 md:pt-14 my-2 md:mt-8">
+      <div
+        ref={cardContainerRef}
+        className="flex flex-col md:w-1/3 m-4 shadow-lg max-h-200 overflow-y-auto"
       >
-          <div className="flex justify-between items-center mb-2">
-            <h2 className="text-xl font-semibold">{info.name}</h2>
-            {info.verified ? (
-              <FaCheckCircle className="text-green-500 w-8 h-8 text-lg" />
-            ) : (
-              <FaTimesCircle className="text-red-500 w-8 h-8 text-lg" />
-            )}
+        {facilityData.map((info, index) => (
+          <div
+            key={index}
+            className={`p-4 bg-white rounded-md border border-gray-300 cursor-pointer mb-4 
+        ${selectedFacility === index ? "bg-green-200" : ""}`}
+            onClick={() => {
+              console.log("Clicked on facility index:", index);
+              setSelectedFacility(index);
+            }}
+          >
+            <div className="flex justify-between items-center mb-2">
+              <h2 className="text-xl font-semibold">{info.name}</h2>
+              {info.verified ? (
+                <FaCheckCircle className="text-green-500 w-8 h-8 text-lg" />
+              ) : (
+                <FaTimesCircle className="text-red-500 w-8 h-8 text-lg" />
+              )}
+            </div>
+            <p className="text-gray-600">Capacity: {info.capacity}</p>
+            <p className="text-gray-600">{addresses[index]}</p>
+            <div className="my-2">
+              <p className="text-lg text-gray-600">Contact: {info.contact}</p>
+              <p className="text-lg text-gray-600">Time: {info.time}</p>
+              <p className="text-lg pb-2 text-gray-600">
+                Distance: {info.distance.toFixed(2)} Km away
+              </p>
+              <div className="flex space-x-6 ">
+                <button
+                  className="btn-md btn-primary"
+                  id={`directionsBtn${index}`}
+                >
+                  Get Directions
+                </button>
+
+                <Link href="/book" className="btn-md btn-primary">
+                  Book Recycling
+                </Link>
+              </div>
+            </div>
           </div>
-          <p className="text-gray-600">Capacity: {info.capacity}</p>
-          <p className="text-gray-600">{addresses[index]}</p>
-          <div className="my-2">
-            <p className="text-lg text-gray-600">Contact: {info.contact}</p>
-            <p className="text-lg text-gray-600">Time: {info.time}</p>
-            <p className="text-lg pb-2 text-gray-600">Distance: {info.distance.toFixed(2)} Km away</p>
-            <button className="btn-md btn-primary" id={`directionsBtn${index}`}>Get Directions</button>
-          </div>
-        </div>
-      ))}
+        ))}
+      </div>
+      <div ref={mapContainerRef} id="map" className="flex m-4" />
     </div>
-    <div ref={mapContainerRef} id="map" className="flex m-4" />
-  </div>
   );
 };
 

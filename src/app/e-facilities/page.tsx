@@ -12,7 +12,7 @@ const Page = () => {
         exit={{ opacity: 0, x: -20 }}
         transition={{ duration: 0.5 }}
       >
-        <div className="my-8 py-8">
+        <div className="my-8 md:mt-4 md:pt-8">
           <FacilityMap />
         </div>
       </motion.div>
