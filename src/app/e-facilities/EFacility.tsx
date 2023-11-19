@@ -146,55 +146,7 @@ const FacilityMap: React.FC = () => {
   };
 
   useEffect(() => {
-    if (clientLocation) {
-      const sortedFacilities = facility
-        .map((facility) => ({
-          ...facility,
-          distance: calculateDistance(
-            clientLocation[1],
-            clientLocation[0],
-            facility.lat,
-            facility.lon
-          ),
-        }))
-        .sort((a, b) => a.distance - b.distance);
-  
-      setFacilityData(sortedFacilities);
-  
-      const map = new mapboxgl.Map({
-        container: mapContainerRef.current!,
-        style: "mapbox://styles/mapbox/streets-v11",
-        center: clientLocation,
-        zoom: 10,
-      });
-  
-      mapRef.current = map;
-  
-      const userMarker = new mapboxgl.Marker({ color: "#256dd9" })
-        .setLngLat(clientLocation)
-        .addTo(map);
-  
-      userMarkerRef.current = userMarker;
-  
-      getAddress(sortedFacilities)
-        .then((newAddress) => {
-          setAddresses(newAddress);
-  
-          sortedFacilities.forEach((facility, index) => {
-            const popup = new Popup({
-              closeButton: false,
-              closeOnClick: false,
-              offset: 25,
-              className: '',
-            }).setHTML(
-              `<h3 class="font-bold text-emerald-600 text-2xl">${facility.name}</h3>
-              <p>Capacity: ${facility.capacity}</p>
-              <p>Address: ${newAddress[index]}</p>
-              <p class="text-gray-600">Contact: ${facility.contact}</p>
-              <p class="text-gray-600">Time: ${facility.time}</p>
-              <p class="text-gray-600 mb-4">Distance: ${facility.distance.toFixed(2)} km away</p>
-              <button class="btn-md btn-primary" id="directionsBtn${index}">Get Directions</button>
-              `
+
             );
   
             const marker = new mapboxgl.Marker({ color: selectedFacility === index ? "#02703f" : "#22b371" })
