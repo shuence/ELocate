@@ -181,19 +181,13 @@ const FacilityMap: React.FC = () => {
           setAddresses(newAddress);
   
           sortedFacilities.forEach((facility, index) => {
-            const popup = new Popup({
-              closeButton: false,
-              closeOnClick: false,
-              offset: 25,
-              className: '',
-            }).setHTML(
+            const popup = new Popup().setHTML(
               `<h3 class="font-bold text-emerald-600 text-2xl">${facility.name}</h3>
               <p>Capacity: ${facility.capacity}</p>
               <p>Address: ${newAddress[index]}</p>
               <p class="text-gray-600">Contact: ${facility.contact}</p>
               <p class="text-gray-600">Time: ${facility.time}</p>
-              <p class="text-gray-600 mb-4">Distance: ${facility.distance.toFixed(2)} km away</p>
-              <button class="btn-md btn-primary" id="directionsBtn${index}">Get Directions</button>
+              <p class="text-gray-600 ">Distance: ${facility.distance.toFixed(2)} km away</p>
               `
             );
   
@@ -206,8 +200,9 @@ const FacilityMap: React.FC = () => {
             marker.addTo(map);
   
             marker.getElement().addEventListener('click', () => {
-            
+              const marker = markersRef.current[index];
               const popup = marker.getPopup();
+              
               if (popup) {
                 if (popup.isOpen()) {
                   popup.remove();
@@ -215,17 +210,11 @@ const FacilityMap: React.FC = () => {
                   popup.addTo(mapRef.current!);
                 }
               }
-      
               setSelectedFacility(index);
-      
-            });
-           popup.on('open', () => {
-              const directionsBtn = document.getElementById(`directionsBtn${index}`);
-              if (directionsBtn) {
-                directionsBtn.addEventListener('click', () => {
-                  getDirections(clientLocation!, [facility.lon, facility.lat]);
-                });
-              }
+            });   
+        
+            popup.on('close', () => {
+              setSelectedFacility(null);
             });
           });      
   
@@ -348,12 +337,14 @@ const FacilityMap: React.FC = () => {
     >
       {facilityData.map((info, index) => (
         <div
-          key={index}
-          className={`p-4 bg-white rounded-md border border-gray-300 cursor-pointer mb-4 ${
-            selectedFacility === index ? "bg-emerald-100" : ""
-          }`}
-          onClick={() => setSelectedFacility(index)}
-        >
+        key={index}
+        className={`p-4 bg-white rounded-md border border-gray-300 cursor-pointer mb-4 
+        ${selectedFacility === index ? "bg-green-200" : ""}`}
+        onClick={() => {
+          console.log("Clicked on facility index:", index);
+          setSelectedFacility(index);
+        }}
+      >
           <div className="flex justify-between items-center mb-2">
             <h2 className="text-xl font-semibold">{info.name}</h2>
             {info.verified ? (
