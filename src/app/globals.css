@@ -7,6 +7,7 @@
   /**
    * colors
    */
+   
 
   --rich-black-fogra-29-1: hsl(215, 31%, 14%);
   --rich-black-fogra-29-2: hsl(230, 14%, 8%);
@@ -216,6 +217,26 @@ body {
   transition: var(--transition-1);
   cursor: pointer;
 }
+.btn-md {
+  font-weight: var(--fw-600);
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border-radius: var(--radius-5);
+  max-width: max-content;
+  transition: var(--transition-1);
+  cursor: pointer;
+}
+
+.btn-sm {
+  font-weight: var(--fw-600);
+  text-transform: uppercase;
+  padding: 2px 5px;
+  border-radius: var(--radius-5);
+  max-width: max-content;
+  transition: var(--transition-1);
+  cursor: pointer;
+}
+
 
 .btn-primary {
   background-color: var(--go-green);

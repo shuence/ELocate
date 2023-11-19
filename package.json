@@ -11,6 +11,7 @@
   "dependencies": {
     "@emailjs/browser": "^3.11.0",
     "@ionic/react": "^7.5.0",
+    "@mapbox/mapbox-gl-directions": "^4.1.1",
     "axios": "^1.6.2",
     "framer-motion": "^10.16.4",
     "mapbox-gl": "^2.15.0",
