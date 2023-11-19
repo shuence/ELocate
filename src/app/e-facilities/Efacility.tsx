@@ -1,10 +1,10 @@
+"use client"
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import mapboxgl, { Map, Popup } from "mapbox-gl";
 import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
 import "mapbox-gl/dist/mapbox-gl.css";
 import getLocation from "../utils/getLocation";
 import { calculateDistance } from "../utils/calculateLocation";
-
 
 interface Facility {
   distance: number;
