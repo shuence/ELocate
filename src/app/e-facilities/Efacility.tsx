@@ -225,7 +225,6 @@ const FacilityMap: React.FC = () => {
             const directionsBtn = document.getElementById(
               `directionsBtn${index}`
             );
-            console.log("Clicked on directionbtn:", directionsBtn);
             if (directionsBtn) {
               directionsBtn.addEventListener("click", () => {
                 getDirections(clientLocation!, [facility.lon, facility.lat]);
@@ -362,7 +361,6 @@ const FacilityMap: React.FC = () => {
             className={`p-4 bg-white rounded-md border border-gray-300 cursor-pointer mb-4 
         ${selectedFacility === index ? "bg-green-200" : ""}`}
             onClick={() => {
-              console.log("Clicked on facility index:", index);
               setSelectedFacility(index);
             }}
           >
