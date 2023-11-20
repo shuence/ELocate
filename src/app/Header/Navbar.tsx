@@ -109,6 +109,7 @@ useEffect(() => {
             <NavItem label="Home" />
             <NavItem label="About" />
             <NavItem label="E-Facilities" />
+            <NavItem label="Recycle" />
             <NavItem label="Education" />
             <NavItem label="Contactus" />
           </ul>

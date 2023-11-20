@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import About from "./About";
+import Smartphone from "./Smartphone";
 
 const Page = () => {
   return (
@@ -13,7 +13,7 @@ const Page = () => {
         transition={{ duration: 0.5 }}
       >
         <div className="md:mt-20 mt-8 pt-8">
-          <About />
+          <Smartphone />
         </div>
       </motion.div>
     </>
