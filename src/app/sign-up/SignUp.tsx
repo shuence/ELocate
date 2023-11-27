@@ -188,7 +188,7 @@ const SignUp: React.FC = () => {
           className="w-full bg-black mt-4 text-white p-2 rounded-lg mb-6 hover:bg-emerald-400 hover:text-black hover:border hover:border-gray-300"
           onClick={register}
         >
-          Sign in
+          Sign Up
         </button>
 
         <div className="text-center text-gray-400">
