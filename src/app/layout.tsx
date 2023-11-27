@@ -16,6 +16,7 @@ export const metadata: Metadata = {
   description: "ELocate - One stop solution to Recycle E-Waste, E-waste Facility Locator",
 };
 
+
 export default function RootLayout({
   children,
 }: {

@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,6 +7,9 @@ import { menuOutline } from "ionicons/icons";
 import { closeOutline } from "ionicons/icons";
 import { location } from "ionicons/icons"
 import logo from "../../assets/ELocate-s.png"
+import { getEmail, getUser, getUserName, handleLogout, isAuthenticated } from "../sign-in/auth";
+import { FiUser } from 'react-icons/fi';
+
 
 interface NavItemProps {
   label: string;
@@ -15,44 +18,48 @@ interface NavItemProps {
 const Header = () => {
   const [isNavbarActive, setIsNavbarActive] = useState(false);
   const [isHeaderActive, setIsHeaderActive] = useState(false);
-  // Inside the component
+  const [locations, setLocation] = useState('');
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-const [locations, setLocation] = useState('');
+  const handleToggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
 
-useEffect(() => {
-  if (navigator.geolocation) {
-    const options = {
-      enableHighAccuracy: true,
-      timeout: 5000,
-      maximumAge: 0
-    };
-    
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const lat = position.coords.latitude;
-        const lon = position.coords.longitude;
-        
-        fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${lon},${lat}.json?access_token=pk.eyJ1Ijoic2h1ZW5jZSIsImEiOiJjbG9wcmt3czMwYnZsMmtvNnpmNTRqdnl6In0.vLBhYMBZBl2kaOh1Fh44Bw`)
-          .then(response => response.json())
-          .then(data => {
-            const city = data.features[0].context.find((context: { id: string | string[]; }) => context.id.includes('place')).text;
-            const state = data.features[0].context.find((context: { id: string | string[]; }) => context.id.includes('region')).text;
-            setLocation(`${city}, ${state}`);
-          })
-          .catch(error => {
-            console.error('Error:', error);
-          });
-      },
-      (error) => {
-        console.error(error);
-      },
-      options  
-    );
-  } else {
-    console.error('Geolocation is not supported by this browser.');
-  }
-}, []);
+  useEffect(() => {
+    document.documentElement.classList.remove('no-js');
 
+    if (navigator.geolocation) {
+      const options = {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0
+      };
+
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const lat = position.coords.latitude;
+          const lon = position.coords.longitude;
+
+          fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${lon},${lat}.json?access_token=pk.eyJ1Ijoic2h1ZW5jZSIsImEiOiJjbG9wcmt3czMwYnZsMmtvNnpmNTRqdnl6In0.vLBhYMBZBl2kaOh1Fh44Bw`)
+            .then(response => response.json())
+            .then(data => {
+              const city = data.features[0].context.find((context: { id: string | string[]; }) => context.id.includes('place')).text;
+              const state = data.features[0].context.find((context: { id: string | string[]; }) => context.id.includes('region')).text;
+              setLocation(`${city}, ${state}`);
+            })
+            .catch(error => {
+              console.error('Error:', error);
+            });
+        },
+        (error) => {
+          console.error(error);
+        },
+        options
+      );
+    } else {
+      console.error('Geolocation is not supported by this browser.');
+    }
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -70,6 +77,8 @@ useEffect(() => {
     };
   }, []);
 
+const user = getUser();
+
   const toggleNavbar = () => {
     setIsNavbarActive(!isNavbarActive);
   };
@@ -77,14 +86,14 @@ useEffect(() => {
   return (
     <header className={`header ${isHeaderActive ? "active" : ""}`} data-header>
       <div className="container shadow-md">
-      <Link href="/">
+        <Link href="/">
           <Image
             src={logo}
             alt="ELocate"
             width={100}
             height={100}
             className="logo ml-4 logo md:ml-16 "
-            />
+          />
         </Link>
 
         <nav className={`navbar ${isNavbarActive ? "active" : ""}`} data-navbar>
@@ -116,14 +125,36 @@ useEffect(() => {
         </nav>
 
         <h1 className='font-montserrat font-bold text-xl ml-12 md:ml-4 md:text-2xl text-emerald-600 flex items-center gap-[1vh]'>
-        <IonIcon icon={location} aria-hidden="true" role="img"></IonIcon>
-        {locations || 'Loading...'}
-</h1>
+          <IonIcon icon={location} aria-hidden="true" role="img"></IonIcon>
+          {locations || 'Loading...'}
+        </h1>
 
-        <Link href="/login" className="btn-outline mr-8">
-          Login
-        </Link>
-
+        {user ? (
+          <div className="relative">
+            <button
+              className="mr-8 text-3xl font-semibold"
+              onClick={handleToggleDropdown}
+            >
+              {user.username.charAt(0).toUpperCase() + user.username.slice(1)}
+            </button>
+            {isDropdownOpen && (
+              <div className="absolute top-12 right-0  divide-y rounded-lg w-44 mt-4">
+                
+                <button
+                  className="btn-md btn-primary"
+                  onClick={handleLogout}
+                >
+                  Logout
+                </button>
+              </div>
+            )}
+          </div>
+                ) : (
+                  <>
+                      <Link href="/sign-in" className="btn-md btn-outline md:mr-4">SignIn</Link>
+                      <Link href="/sign-up" className="hidden md:ml-8 md:btn md:btn-outline">SignUp</Link>
+                  </>
+                )}
         <button
           className="nav-open-btn"
           aria-label="open menu"

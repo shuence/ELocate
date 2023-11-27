@@ -1,10 +1,9 @@
+import { useEffect, useState } from "react";
 import Home from "./Components";
-import NotFound from "./Components/NotFound";
-import Footer from "./Footer/Footer";
-import Navbar from "./Header/Navbar";
-import NotFoundPage from "./not-found";
+import { isAuthenticated } from "./sign-in/auth";
 
 export default function App() {
+
   return (
     <>
       <Home/>
