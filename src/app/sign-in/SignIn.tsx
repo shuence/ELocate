@@ -39,7 +39,6 @@ const Signin: React.FC = () => {
   
       toast.success("Login Successful!");
   
-      // Check if 'user' object is defined
       if (user) {
         setUser(user);
         setEmail(user.email);
@@ -60,7 +59,7 @@ const Signin: React.FC = () => {
   
 
   return (
-    <div className="flex items-center justify-center h-336 md:max-h-240">
+    <div className="flex items-center justify-center md:h-screen h-[70vh]">
       <ToastContainer
         className="text-2xl"
         position="top-right"

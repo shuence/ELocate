@@ -132,13 +132,13 @@ const user = getUser();
         {user ? (
           <div className="relative">
             <button
-              className="mr-8 text-3xl font-semibold"
+              className="md:mr-8 text-sm md:text-3xl font-semibold"
               onClick={handleToggleDropdown}
             >
               {user.username.charAt(0).toUpperCase() + user.username.slice(1)}
             </button>
             {isDropdownOpen && (
-              <div className="absolute top-12 right-0  divide-y rounded-lg w-44 mt-4">
+              <div className="absolute top-12 right-0  divide-y rounded-lg w-44 mt-2">
                 
                 <button
                   className="btn-md btn-primary"
