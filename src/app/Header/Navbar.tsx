@@ -139,7 +139,9 @@ const user = getUser();
             </button>
             {isDropdownOpen && (
               <div className="absolute top-12 right-0  divide-y rounded-lg w-44 mt-2">
-                
+                <Link href="/profile" className="btn-md btn-primary">
+                  Profile
+                </Link>
                 <button
                   className="btn-md btn-primary"
                   onClick={handleLogout}
@@ -151,8 +153,7 @@ const user = getUser();
           </div>
                 ) : (
                   <>
-                      <Link href="/sign-in" className="btn-md btn-outline md:mr-4">SignIn</Link>
-                      <Link href="/sign-up" className="hidden md:ml-8 md:btn md:btn-outline">SignUp</Link>
+                      <Link href="/sign-up" className="btn-md btn-outline md:mr-4">SignUp</Link>
                   </>
                 )}
         <button
