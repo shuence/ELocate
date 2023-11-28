@@ -1,3 +1,5 @@
+import { facility } from "@/app/e-facilities/data/facility";
+import { getEmail, getPhoneNumber, getUserID, getfullname } from "@/app/sign-in/auth";
 import React, { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -7,27 +9,37 @@ interface Brand {
   models: string[];
 }
 
-interface Facility {
-  distance: number;
-  name: string;
-  capacity: string;
-  lon: number;
-  lat: number;
-  contact: string;
-  time: string;
-  verified: boolean;
+interface BookingData {
+  userId: string;
+  userEmail: string;
+  recycleItem: string;
+  recycleItemPrice: number;
+  pickupDate: string;
+  pickupTime: string;
+  facility: string; // Facility ID
+  fullName: string;
+  address: string;
+  phone: number;
 }
 
 const Smartphone: React.FC = () => {
   const [selectedBrand, setSelectedBrand] = useState("");
   const [selectedModel, setSelectedModel] = useState("");
+  const [selectedFacility, setSelectedFacility] = useState("");
+  const [recycleItemPrice, setRecycleItemPrice] = useState<number>(0);
+  const [pickupDate, setPickupDate] = useState<string>("");
+  const [pickupTime, setPickupTime] = useState<string>("");
   const [brands, setBrands] = useState<Brand[]>([]);
+  const [address, setAddress] = useState("");
   const [models, setModels] = useState<string[]>([]);
+  const [bookingData, setBookingData] = useState<BookingData[]>([]);
+
 
   const handleBrandChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const brand = event.target.value;
     setSelectedBrand(brand);
     setSelectedModel("");
+    setSelectedFacility("");
 
     if (brand) {
       const selectedBrand = brands.find((b) => b.brand === brand);
@@ -132,11 +144,75 @@ const Smartphone: React.FC = () => {
     fetchBrandsAndModels();
   }, [models]);
 
-  const handleSubmit = () => {
-    toast.success("Submitted successfully!", {
-      autoClose: 3000,
-    });
+  const email = getEmail();
+  const userId = getUserID();
+  const phone = getPhoneNumber();
+  const fullname = getfullname();
+
+  const handleSubmit = async () => {
+    const recycleItem = selectedBrand + selectedModel;
+
+    if (
+      recycleItem &&
+      selectedFacility &&
+      recycleItemPrice > 0 &&
+      pickupDate &&
+      pickupTime &&
+      fullname &&
+      phone &&
+      address &&
+      email &&
+      userId
+    ) {
+      const newBooking: BookingData = {
+        userId: userId,
+        userEmail: email,
+        recycleItem,
+        recycleItemPrice,
+        pickupDate,
+        pickupTime,
+        facility: selectedFacility,
+        fullName: fullname,
+        address: address,
+        phone: phone as unknown as number,
+      };
+
+      setBookingData([...bookingData, newBooking]);
+
+      try {
+        const response = await fetch('http://localhost:4000/api/v1/booking', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(newBooking),
+        });
+
+        if (response.ok) {
+          toast.success('Submitted successfully!', {
+            autoClose: 3000,
+          });
+        } else {
+          toast.error('Error submitting data.', {
+            autoClose: 3000,
+          });
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        toast.error('Error submitting data.', {
+          autoClose: 3000,
+        });
+      }
+    } else {
+      toast.error('Please fill in all the required fields.', {
+        autoClose: 3000,
+      });
+    }
   };
+
+  const currentDate = new Date().toISOString().split("T")[0];
+  const currentTime = new Date().getHours() + ":" + new Date().getMinutes();
+
 
   return (
     <div className="container mx-auto p-8">
@@ -146,7 +222,7 @@ const Smartphone: React.FC = () => {
         Smartphone Recycling
       </h1>
       <form
-        className="md:max-w-200 w-128 md:max-h-80 h-68  mx-auto"
+        className="grid grid-cols-1 md:grid-cols-2 mx-8 md:mx-0 gap-4 justify-center"
         onSubmit={(e) => {
           e.preventDefault();
           handleSubmit();
@@ -163,7 +239,7 @@ const Smartphone: React.FC = () => {
             id="brand"
             value={selectedBrand}
             onChange={handleBrandChange}
-            className="mt-1 text-xl p-2 border rounded-md w-full"
+            className="w-full p-2 sign-field rounded-md placeholder:font-light placeholder:text-gray-500"
           >
             <option value="">Select Brand</option>
             {brands.map((brand) => (
@@ -174,36 +250,138 @@ const Smartphone: React.FC = () => {
           </select>
         </div>
 
-        {selectedBrand && (
-          <div className="mb-4">
-            <label
-              htmlFor="model"
-              className="block text-2xl font-medium text-gray-600"
-            >
-              Select Model:
-            </label>
-            <select
-              id="model"
-              value={selectedModel}
-              onChange={(e) => setSelectedModel(e.target.value)}
-              className="mt-1 p-2 text-xl border rounded-md w-full"
-            >
-              <option value="">Select Model</option>
-              {models.map((model) => (
-                <option key={model} value={model}>
-                  {model}
-                </option>
-              ))}
-            </select>
-          </div>
-        )}
+        <div className="mb-4">
+          <label
+            htmlFor="model"
+            className="block text-2xl font-medium text-gray-600"
+          >
+            Select Model:
+          </label>
+          <select
+            id="model"
+            value={selectedModel}
+            onChange={(e) => setSelectedModel(e.target.value)}
+            className="w-full p-2 sign-field rounded-md placeholder:font-light placeholder:text-gray-500"
+          >
+            <option value="">Select Model</option>
+            {models.map((model) => (
+              <option key={model} value={model}>
+                {model}
+              </option>
+            ))}
+          </select>
+        </div>
 
-        <button
-          type="submit"
-          className="bg-emerald-700 text-xl text-white px-6 py-3 rounded-md w-full"
-        >
-          Submit
-        </button>
+        <div className="mb-4">
+          <label
+            htmlFor="recycleItemPrice"
+            className="block text-2xl font-medium text-gray-600"
+          >
+            Recycle Item Price:
+          </label>
+          <input
+            type="number"
+            id="recycleItemPrice"
+            value={recycleItemPrice}
+            onChange={(e) => setRecycleItemPrice(Number(e.target.value))}
+            className="w-full p-2 sign-field rounded-md placeholder:font-light placeholder:text-gray-500"
+          />
+        </div>
+
+        <div className="mb-4">
+          <label
+            htmlFor="pickupDate"
+            className="block text-2xl font-medium text-gray-600"
+          >
+            Pickup Date:
+          </label>
+          <input
+            type="date"
+            id="pickupDate"
+            value={pickupDate}
+            min={currentDate} 
+            onChange={(e) => setPickupDate(e.target.value)}
+            className="w-full p-2 sign-field rounded-md placeholder:font-light placeholder:text-gray-500"
+          />
+        </div>
+
+        <div className="mb-4">
+          <label
+            htmlFor="pickupTime"
+            className="block text-2xl font-medium text-gray-600"
+          >
+            Pickup Time:
+          </label>
+          <input
+            type="time"
+            id="pickupTime"
+            value={pickupTime}
+            min={currentTime}
+            onChange={(e) => setPickupTime(e.target.value)}
+            className="w-full p-2 sign-field rounded-md placeholder:font-light placeholder:text-gray-500"
+          />
+        </div>
+
+        <div className="mb-4">
+          <label
+            htmlFor="address"
+            className="block text-2xl font-medium text-gray-600"
+          >
+            Address:
+          </label>
+          <input
+            type="text"
+            id="address"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+            className="w-full p-2 sign-field rounded-md placeholder:font-light placeholder:text-gray-500"
+          />
+        </div>
+
+        <div className="mb-4">
+          <label
+            htmlFor="phone"
+            className="block text-2xl font-medium text-gray-600"
+          >
+            Phone:
+          </label>
+          <input
+            type="tel"
+            id="phone"
+            value={phone ?? ""}
+            className="w-full p-2 sign-field rounded-md placeholder:font-light placeholder:text-gray-500"
+          />
+        </div>
+
+        <div className="mb-4">
+          <label
+            htmlFor="facility"
+            className="block text-2xl font-medium text-gray-600"
+          >
+            Select Facility:
+          </label>
+          <select
+            id="facility"
+            value={selectedFacility}
+            onChange={(e) => setSelectedFacility(e.target.value)}
+            className="w-full p-2 sign-field rounded-md placeholder:font-light placeholder:text-gray-500"
+          >
+            <option value="">Select Facility</option>
+            {facility.map((facility) => (
+              <option key={facility.name} value={facility.name}>
+                {facility.name}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="mb-4 md:col-span-2">
+          <button
+            type="submit"
+            className="bg-emerald-700 text-xl text-white px-6 py-3 rounded-md w-full"
+          >
+            Submit
+          </button>
+        </div>
       </form>
     </div>
   );

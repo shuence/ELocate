@@ -132,18 +132,18 @@ const user = getUser();
         {user ? (
           <div className="relative">
             <button
-              className="md:mr-8 text-sm md:text-3xl font-semibold"
+              className="md:mr-8 text-sm md:text-xl font-semibold"
               onClick={handleToggleDropdown}
             >
               {user.username.charAt(0).toUpperCase() + user.username.slice(1)}
             </button>
             {isDropdownOpen && (
-              <div className="absolute top-12 right-0  divide-y rounded-lg w-44 mt-2">
-                <Link href="/profile" className="btn-md btn-primary">
+              <div className="absolute top-12 right-0 bg-gray-200 p-4 shadow-md divide-y rounded-lg w-44 mt-2">
+                <Link href="/profile" className="">
                   Profile
                 </Link>
                 <button
-                  className="btn-md btn-primary"
+                  className=""
                   onClick={handleLogout}
                 >
                   Logout

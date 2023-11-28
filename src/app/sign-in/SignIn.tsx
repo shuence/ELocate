@@ -2,7 +2,7 @@ import React, { useState, ChangeEvent, FormEvent } from "react";
 import Link from "next/link";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
-import { setEmail, setPhoneNumber, setToken, setUser, setUserName } from "./auth";
+import { setEmail, setPhoneNumber, setToken, setUser, setUserID, setUserName, setfullname } from "./auth";
 
 const Signin: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -44,7 +44,8 @@ const Signin: React.FC = () => {
         setEmail(user.email);
         setToken(user.token)
         setPhoneNumber(user.phoneNumber);
-
+        setfullname(user.fullname);
+        setUserID(user.id);
         if (user.username) {
           setUserName(user.username);
         }

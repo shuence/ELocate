@@ -37,6 +37,22 @@ export const getUser = (): any | null => {
   return null;
 };
 
+export const setUserID = (id: any): void => {
+  if (isLocalStorageAvailable) {
+    localStorage.setItem('id', id);
+  }
+};
+
+export const getUserID = (): any | null => {
+  if (isLocalStorageAvailable) {
+    const userId = localStorage.getItem('id');
+    return userId;
+  }
+  return null;
+};
+
+
+
 export const setUserName = (username: string): void => {
   if (isLocalStorageAvailable) {
     localStorage.setItem('username', username);
@@ -50,6 +66,19 @@ export const getUserName = (): string | null => {
   }
   return null;
 };
+
+export const setfullname = (fullname: string): void => {
+  if (isLocalStorageAvailable) {
+    localStorage.setItem('fullname', fullname);
+  }
+};
+export const getfullname = (): string | null => {
+  if (isLocalStorageAvailable) {
+    const fullname = localStorage.getItem('fullname');
+    return fullname;
+  }
+  return null;
+}
 
 export const setEmail = (email: string): void => {
   if (isLocalStorageAvailable) {

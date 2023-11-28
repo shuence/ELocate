@@ -62,7 +62,7 @@ const SignUp: React.FC = () => {
         </span>
       </div>
 
-      <div className="mx-auto w-4/5 md:w-256 h-[70vh]">
+      <div className="mx-auto w-4/5 md:w-256 h-[90vh] md:h-[70vh]">
         <div className="relative flex flex-col md:flex-row p-6 bg-white shadow-2xl rounded-2xl">
           {/* Left Column */}
           <div className="flex flex-col justify-center p-4 md:w-1/2">
