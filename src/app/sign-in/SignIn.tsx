@@ -27,6 +27,7 @@ const Signin: React.FC = () => {
   };
 
   const login = async () => {
+    toast.loading("Loading..")
     try {
       const response = await axios.post(
         "https://elocate-server.onrender.com/api/v1/auth/login",
@@ -57,7 +58,9 @@ const Signin: React.FC = () => {
       toast.error("Login Failed. Please check your credentials.");
     }
   };
-  
+
+
+
 
   return (
     <div className="flex items-center justify-center md:h-screen h-[70vh]">

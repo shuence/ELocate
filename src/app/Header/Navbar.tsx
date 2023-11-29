@@ -9,6 +9,7 @@ import { location } from "ionicons/icons"
 import logo from "../../assets/ELocate-s.png"
 import { getEmail, getUser, getUserName, handleLogout, isAuthenticated } from "../sign-in/auth";
 import { FiUser } from 'react-icons/fi';
+import getLocation from "../utils/getLocation";
 
 
 interface NavItemProps {
@@ -139,12 +140,12 @@ const user = getUser();
               {user.username.charAt(0).toUpperCase() + user.username.slice(1)}
             </button>
             {isDropdownOpen && (
-              <div className="absolute top-12 right-0 bg-gray-200 p-4 shadow-md divide-y rounded-lg w-44 mt-2">
-                <Link href="/profile" className="">
+              <div className="absolute top-12 right-0 projects p-4  shadow-md divide-y rounded-lg w-44 mt-2">
+                <Link href="/profile" className="hover:text-emerald-500">
                   Profile
                 </Link>
                 <button
-                  className=""
+                  className="hover:text-emerald-500"
                   onClick={handleLogout}
                 >
                   Logout

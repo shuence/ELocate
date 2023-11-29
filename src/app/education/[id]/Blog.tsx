@@ -16,7 +16,7 @@ const BlogDetail: React.FC = () => {
 
   return (
   <div className="section mx-8 grid grid-cols-1 md:grid-cols-5 gap-2">
-      <div className="col-span-4 shadow-sm">
+      <div className="col-span-4 border border-gray-400 p-4 rounded-lg shadow-sm">
         <div className="container ">
           <h2 className="text-3xl font-bold mb-4 text-emerald-600">{blog.title}</h2>
           <Image
@@ -29,7 +29,7 @@ const BlogDetail: React.FC = () => {
           <p className="text-gray-500 md:text-2xl text-xl mt-4">{blog.description}</p>
         </div>
       </div>
-      <div className="col-span-1">
+      <div className="col-span-1 border border-gray-400 rounded-lg">
         <div className="bg-white p-4 mb-8 md:my-0 rounded-md shadow-md">
           <h2 className="md:text-2xl text-xl font-bold md:mb-8">Random Blogs</h2>
           {randomBlogs.map((blog) => (

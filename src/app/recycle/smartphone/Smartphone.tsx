@@ -1,5 +1,11 @@
 import { facility } from "@/app/e-facilities/data/facility";
-import { getEmail, getPhoneNumber, getUserID, getfullname } from "@/app/sign-in/auth";
+import {
+  getEmail,
+  getPhoneNumber,
+  getUserID,
+  getfullname,
+  isAuthenticated,
+} from "@/app/sign-in/auth";
 import React, { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -7,6 +13,16 @@ import "react-toastify/dist/ReactToastify.css";
 interface Brand {
   brand: string;
   models: string[];
+}
+
+interface Facility {
+  name: string;
+  capacity: string;
+  lon: number;
+  lat: number;
+  contact: string;
+  time: string;
+  verified: boolean;
 }
 
 interface BookingData {
@@ -33,14 +49,26 @@ const Smartphone: React.FC = () => {
   const [address, setAddress] = useState("");
   const [models, setModels] = useState<string[]>([]);
   const [bookingData, setBookingData] = useState<BookingData[]>([]);
+  const [facilityData, setFacilityData] = useState<Facility[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
+  useEffect(() => {
+    fetch("http://localhost:4000/api/v1/facility")
+      .then((response) => response.json())
+      .then((data) => {
+        setFacilityData(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching facilities:", error);
+      });
+  }, []);
 
   const handleBrandChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const brand = event.target.value;
     setSelectedBrand(brand);
     setSelectedModel("");
     setSelectedFacility("");
-
+  
     if (brand) {
       const selectedBrand = brands.find((b) => b.brand === brand);
       if (selectedBrand) {
@@ -149,9 +177,10 @@ const Smartphone: React.FC = () => {
   const phone = getPhoneNumber();
   const fullname = getfullname();
 
-  const handleSubmit = async () => {
-    const recycleItem = selectedBrand + selectedModel;
+ const handleSubmit = async () => {
+  const recycleItem = selectedBrand + selectedModel;
 
+  if (isAuthenticated() && facility.length > 0) {
     if (
       recycleItem &&
       selectedFacility &&
@@ -161,9 +190,11 @@ const Smartphone: React.FC = () => {
       fullname &&
       phone &&
       address &&
+      fullname &&
       email &&
       userId
     ) {
+
       const newBooking: BookingData = {
         userId: userId,
         userEmail: email,
@@ -178,41 +209,66 @@ const Smartphone: React.FC = () => {
       };
 
       setBookingData([...bookingData, newBooking]);
+      setIsLoading(true)
 
       try {
-        const response = await fetch('https://elocate-server.onrender.com/api/v1/booking', {
-          method: 'POST',
+        const response = await fetch("http://localhost:4000/api/v1/booking", {
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
           body: JSON.stringify(newBooking),
         });
 
         if (response.ok) {
-          toast.success('Submitted successfully!', {
+          toast.success("Submitted successfully!", {
             autoClose: 3000,
           });
+          setSelectedBrand("");
+          setSelectedModel("");
+          setSelectedFacility("");
+          setRecycleItemPrice(0);
+          setPickupDate("");
+          setPickupTime("");
+          setAddress("");
+          setIsLoading(false)
+
         } else {
-          toast.error('Error submitting data.', {
+          toast.error("Error submitting data.", {
             autoClose: 3000,
           });
         }
       } catch (error) {
-        console.error('Error:', error);
-        toast.error('Error submitting data.', {
+        console.error("Error:", error);
+        toast.error("Error submitting data.", {
           autoClose: 3000,
         });
       }
+      finally {
+        setIsLoading(false);
+    }
     } else {
-      toast.error('Please fill in all the required fields.', {
+      toast.error("Please fill in all the required fields.", {
         autoClose: 3000,
       });
     }
-  };
+  } else {
+    toast.error("Please Login to book a facility", {
+      autoClose: 3000,
+    });
+  }
+};
 
+if (isLoading) {
+  return (
+    <div className="loader-container">
+      <div className="loader" />
+      <div className="loading-text">Submitting...</div>
+    </div>
+  );
+}
   const currentDate = new Date().toISOString().split("T")[0];
   const currentTime = new Date().getHours() + ":" + new Date().getMinutes();
-
 
   return (
     <div className="container mx-auto p-8">
@@ -299,7 +355,7 @@ const Smartphone: React.FC = () => {
             type="date"
             id="pickupDate"
             value={pickupDate}
-            min={currentDate} 
+            min={currentDate}
             onChange={(e) => setPickupDate(e.target.value)}
             className="w-full p-2 sign-field rounded-md placeholder:font-light placeholder:text-gray-500"
           />
@@ -349,6 +405,7 @@ const Smartphone: React.FC = () => {
             type="tel"
             id="phone"
             value={phone ?? ""}
+            readOnly
             className="w-full p-2 sign-field rounded-md placeholder:font-light placeholder:text-gray-500"
           />
         </div>
@@ -367,7 +424,7 @@ const Smartphone: React.FC = () => {
             className="w-full p-2 sign-field rounded-md placeholder:font-light placeholder:text-gray-500"
           >
             <option value="">Select Facility</option>
-            {facility.map((facility) => (
+            {facilityData.map((facility) => (
               <option key={facility.name} value={facility.name}>
                 {facility.name}
               </option>

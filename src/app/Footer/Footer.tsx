@@ -187,9 +187,9 @@ const Footer = () => {
               <p className="footer-list-title">Contact Us</p>
             </li>
             <li className="footer-item">
-              <IonIcon icon={location} aria-hidden="true"></IonIcon>
+              <IonIcon icon={location} aria-hidden="true" className="w-8 h-8 mt-4"></IonIcon>
               <address className="contact-link address">
-                Chh. Sambhajinagar (Auramgabad),Maharashtra,431001
+                Chh.Sambhajinagar,<br />Maharashtra,  431001
               </address>
             </li>
             <li className="footer-item">
@@ -266,7 +266,7 @@ const Footer = () => {
         <p className="copyright">
             &copy; 2023 ELocate | All Rights Reserved by{" "}
             <Link href="/" className="copyright-link">
-              InnovisionSquad
+              Spam Byte
             </Link>
           </p>
           <ul className="footer-bottom-list">

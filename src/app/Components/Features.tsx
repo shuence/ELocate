@@ -43,10 +43,10 @@ const elocateFeatures = [
 const Features: React.FC = () => {
   return (
     <>
-      <section className="features" id="features" aria-label="features">
+      <section className=" features" id="features" aria-label="features">
         <div className="container mx-auto px-4 pb-4 text-center">
           <AboutUs />
-          <ul className="grid-list py-20 my-2">
+          <ul className="grid-list section py-20 my-2">
             {elocateFeatures.map((feature, index) => (
               <li key={index}>
                 <div className="features-card">

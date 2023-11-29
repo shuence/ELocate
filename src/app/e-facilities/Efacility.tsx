@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import mapboxgl, { Map, Popup } from "mapbox-gl";
@@ -8,10 +9,8 @@ import { calculateDistance } from "../utils/calculateLocation";
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import Link from "next/link";
-import { facility } from "./data/facility";
 
 interface Facility {
-  distance: number;
   name: string;
   capacity: string;
   lon: number;
@@ -35,6 +34,7 @@ const FacilityMap: React.FC = () => {
   const markersRef = useRef<mapboxgl.Marker[]>([]);
   const mapRef = useRef<Map | null>(null);
   const userMarkerRef = useRef<mapboxgl.Marker | null>(null);
+
 
   useEffect(() => {
     mapboxgl.accessToken =
@@ -76,8 +76,19 @@ const FacilityMap: React.FC = () => {
   };
 
   useEffect(() => {
+    fetch('http://localhost:4000/api/v1/facility')
+      .then((response) => response.json())
+      .then((data) => {
+        setFacilityData(data);
+      })
+      .catch((error) => {
+        console.error('Error fetching facilities:', error);
+      });
+  }, [ selectedFacility]);
+
+  useEffect(() => {
     if (clientLocation) {
-      const sortedFacilities = facility
+      const sortedFacilities = facilityData
         .map((facility) => ({
           ...facility,
           distance: calculateDistance(
@@ -106,7 +117,6 @@ const FacilityMap: React.FC = () => {
   
       map.addControl(geocoder);
 
-      // ... (inside the useEffect where the map is initialized)
 
       geocoder.on("result", (event: { result: { geometry: any; place_name: any; }; }) => {
         const { geometry, place_name } = event.result;
@@ -123,16 +133,15 @@ const FacilityMap: React.FC = () => {
       
           selectedLocationMarker.setPopup(popup);
 
-          // Find the nearest facility
-          let nearestFacility = facility[0];
+          let nearestFacility = facilityData[0];
           let nearestDistance = calculateDistance(
             center[1],
             center[0],
-            facility[0].lat,
-            facility[0].lon
+            facilityData[0].lat,
+            facilityData[0].lon
           );
       
-          facility.forEach((facility) => {
+          facilityData.forEach((facility) => {
             const distance = calculateDistance(
               center[1],
               center[0],
@@ -352,7 +361,6 @@ const FacilityMap: React.FC = () => {
               <p className="text-lg text-gray-600">Contact: {info.contact}</p>
               <p className="text-lg text-gray-600">Time: {info.time}</p>
               <p className="text-lg pb-2 text-gray-600">
-                Distance: {info.distance.toFixed(2)} Km away
               </p>
               <div className="flex space-x-6 ">
                 <button
