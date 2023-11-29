@@ -180,7 +180,7 @@ const Smartphone: React.FC = () => {
       setBookingData([...bookingData, newBooking]);
 
       try {
-        const response = await fetch('http://localhost:4000/api/v1/booking', {
+        const response = await fetch('https://elocate-server.onrender.com/api/v1/booking', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
