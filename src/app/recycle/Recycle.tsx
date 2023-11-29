@@ -25,7 +25,7 @@ const Recycle: React.FC = () => {
       icon: <FiSmartphone size={48} />,
     },
     {
-      itemName: "Laptop",
+      itemName: "Laptop / Desktops",
       description: "Dispose of your old laptops in an eco-friendly way.",
       recyclingProcess:
         "Our recycling process adheres to environmental standards.",
@@ -57,6 +57,24 @@ const Recycle: React.FC = () => {
       specialInstructions:
         "Ensure the refrigerator is defrosted before recycling.",
       icon: <RiFridgeFill size={48} />,
+    },
+    {
+      itemName: "Washing Machine",
+      description: "Responsible recycling of old washing machines.",
+      recyclingProcess:
+        "Proper dismantling and recycling of metal and electronic components.",
+      specialInstructions:
+        "Ensure the washing machine is empty before recycling.",
+      icon: <GiWashingMachine size={48} />,
+    },
+    {
+      itemName: "Washing Machine",
+      description: "Responsible recycling of old washing machines.",
+      recyclingProcess:
+        "Proper dismantling and recycling of metal and electronic components.",
+      specialInstructions:
+        "Ensure the washing machine is empty before recycling.",
+      icon: <GiWashingMachine size={48} />,
     },
     {
       itemName: "Washing Machine",

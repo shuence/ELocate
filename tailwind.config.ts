@@ -14,15 +14,15 @@ const config: Config = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       spacing: {
+
         '120': "30rem",
         '128': '32rem',
         '200': '50rem',
         '240': '60rem',
         '256': '64rem',
-
-
       },
       height: {
+        '104': '26rem',
         '128': '32rem',
         '200': '50rem',
         '240': '60rem',

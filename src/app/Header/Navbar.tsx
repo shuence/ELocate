@@ -121,6 +121,7 @@ const user = getUser();
             <NavItem label="Recycle" />
             <NavItem label="Education" />
             <NavItem label="Contactus" />
+            <NavItem label="Rules" />
           </ul>
         </nav>
 

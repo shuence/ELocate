@@ -327,7 +327,7 @@ const Smartphone: React.FC = () => {
             htmlFor="address"
             className="block text-2xl font-medium text-gray-600"
           >
-            Address:
+            Location:
           </label>
           <input
             type="text"
