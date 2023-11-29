@@ -1,9 +1,10 @@
 import React from 'react';
-import { getUser } from '../sign-in/auth';
+import { getUser, getUserName } from '../sign-in/auth';
 import Image from 'next/image';
 
 const Profile = () => {
   const user = getUser();
+  const username = getUserName();
 
   return (
     <div className="container mx-auto p-8">
@@ -22,7 +23,7 @@ const Profile = () => {
               </div>
             </div>
             <div className="p-2 text-center">
-              <h3 className="text-2xl text-gray-900 font-semibold">{user.username}</h3>
+              <h3 className="text-2xl text-gray-900 font-semibold">{username}</h3>
               <table className=" my-3 text-xl mx-auto">
                 <tbody> <tr>
                     <td className="px-2 py-2 text-left text-gray-500 font-semibold">Email</td>
