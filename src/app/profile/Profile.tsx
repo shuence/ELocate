@@ -1,10 +1,12 @@
 import React from 'react';
-import { getUser, getUserName } from '../sign-in/auth';
+import { getEmail, getPhoneNumber, getUserName, getfullname } from '../sign-in/auth';
 import Image from 'next/image';
 
 const Profile = () => {
-  const user = getUser();
   const username = getUserName();
+  const email = getEmail();
+  const fullname = getfullname();
+  const phone = getPhoneNumber();
 
   return (
     <div className="container mx-auto p-8">
@@ -27,15 +29,15 @@ const Profile = () => {
               <table className=" my-3 text-xl mx-auto">
                 <tbody> <tr>
                     <td className="px-2 py-2 text-left text-gray-500 font-semibold">Email</td>
-                    <td className="px-2 py-2 text-left">{user.email}</td>
+                    <td className="px-2 py-2 text-left">{email}</td>
                   </tr>
                <tr>
                     <td className="px-2 py-2 text-left text-gray-500 font-semibold">Full Name</td>
-                    <td className="px-2 py-2 text-left">{user.fullname}</td>
+                    <td className="px-2 py-2 text-left">{fullname}</td>
                   </tr>
                   <tr>
                     <td className="px-2 py-2 text-left text-gray-500 font-semibold">Phone</td>
-                    <td className="px-2 py-2 text-left">{user.phoneNumber}</td>
+                    <td className="px-2 py-2 text-left">{phone}</td>
                   </tr>
                  
                 </tbody>
