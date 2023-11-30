@@ -41,10 +41,9 @@ const Others: React.FC = () => {
   const [selectedBrand, setSelectedBrand] = useState("");
   const [selectedModel, setSelectedModel] = useState("");
   const [selectedFacility, setSelectedFacility] = useState("");
-  const [recycleItemPrice, setRecycleItemPrice] = useState<number>(0);
+  const [recycleItemPrice, setRecycleItemPrice] = useState<number>();
   const [pickupDate, setPickupDate] = useState<string>("");
   const [pickupTime, setPickupTime] = useState<string>("");
-  const [brands, setBrands] = useState<Brand[]>([]);
   const [address, setAddress] = useState("");
   const [models, setModels] = useState<string[]>([]);
   const [bookingData, setBookingData] = useState<BookingData[]>([]);
@@ -62,59 +61,14 @@ const Others: React.FC = () => {
       });
   }, []);
 
-  const handleBrandChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const brand = event.target.value;
-    setSelectedBrand(brand);
-    setSelectedModel("");
-    setSelectedFacility("");
-  
-    if (brand) {
-      const selectedBrand = brands.find((b) => b.category === brand);
-      if (selectedBrand) {
-        setModels(selectedBrand.items);
-      }
-    }
+  const handleBrandChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectedBrand(event.target.value);
   };
 
-  useEffect(() => {
-    const fetchBrandsAndModels = () => {
-      const OthersData = [
-        {
-          category: "Headphones",
-          items: ["Sony WH-1000XM4", "Bose QuietComfort 35 II", "AirPods Pro", "Sennheiser HD 660 S", "JBL Free X"],
-        },
-        {
-          category: "Chargers",
-          items: ["Anker PowerPort", "Belkin Boost Charge", "Apple 20W USB-C Power Adapter", "Samsung Super Fast Charger", "RAVPower 60W 6-Port USB Charger"],
-        },
-        {
-          category: "Laptop Bags",
-          items: ["SwissGear Travel Gear 1900 Scansmart TSA Laptop Backpack", "AmazonBasics Laptop Backpack", "Targus Drifter II Backpack", "KROSER Laptop Backpack", "Matein Travel Laptop Backpack"],
-        },
-        {
-          category: "External Hard Drives",
-          items: ["WD Black 5TB P10 Game Drive", "Seagate Backup Plus Slim 2TB", "Samsung T5 Portable SSD", "LaCie Rugged Mini 4TB", "Toshiba Canvio Basics 1TB"],
-        },
-        {
-          category: "Smartwatches",
-          items: ["Apple Watch Series 7", "Samsung Galaxy Watch 4", "Fitbit Charge 5", "Garmin Venu 2", "Amazfit GTR 3"],
-        },
-        {
-          category: "Mouse and Keyboards",
-          items: ["Logitech MX Master 3", "Razer DeathAdder Elite", "Apple Magic Keyboard", "Corsair K95 RGB Platinum XT", "HP Wireless Elite Keyboard"],
-        },
-        {
-          category: "Power Banks",
-          items: ["Anker PowerCore 26800mAh", "RAVPower Portable Charger 20000mAh", "Xiaomi Mi Power Bank 3", "AUKEY Portable Charger 10000mAh", "Samsung Wireless Charger Portable Battery 10,000mAh"],
-        },
-      ];
-      
+  const handleModelChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectedModel(event.target.value);
+  };
 
-      setBrands(OthersData);
-      setModels(models);
-    };
-    fetchBrandsAndModels();
-  }, [models]);
 
   const email = getEmail();
   const userId = getUserID();
@@ -128,7 +82,7 @@ const Others: React.FC = () => {
     if (
       recycleItem &&
       selectedFacility &&
-      recycleItemPrice > 0 &&
+      recycleItemPrice &&
       pickupDate &&
       pickupTime &&
       fullname &&
@@ -228,26 +182,20 @@ if (isLoading) {
           handleSubmit();
         }}
       >
-        <div className="mb-4">
+       <div className="mb-4">
           <label
             htmlFor="brand"
             className="block text-2xl font-medium text-gray-600"
           >
-            Select Category:
+            Device:
           </label>
-          <select
+          <input
+            type="text"
             id="brand"
             value={selectedBrand}
             onChange={handleBrandChange}
             className="w-full p-2 sign-field rounded-md placeholder:font-light placeholder:text-gray-500"
-          >
-            <option value="">Select Category</option>
-            {brands.map((brand) => (
-              <option key={brand.category} value={brand.category}>
-                {brand.category}
-              </option>
-            ))}
-          </select>
+          />
         </div>
 
         <div className="mb-4">
@@ -255,23 +203,16 @@ if (isLoading) {
             htmlFor="model"
             className="block text-2xl font-medium text-gray-600"
           >
-            Select Items:
+            Device Company/Model:
           </label>
-          <select
+          <input
+            type="text"
             id="model"
             value={selectedModel}
-            onChange={(e) => setSelectedModel(e.target.value)}
+            onChange={handleModelChange}
             className="w-full p-2 sign-field rounded-md placeholder:font-light placeholder:text-gray-500"
-          >
-            <option value="">Select Items</option>
-            {models.map((model) => (
-              <option key={model} value={model}>
-                {model}
-              </option>
-            ))}
-          </select>
+          />
         </div>
-
         <div className="mb-4">
           <label
             htmlFor="recycleItemPrice"

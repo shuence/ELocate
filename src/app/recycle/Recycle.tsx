@@ -26,7 +26,7 @@ const Recycle: React.FC = () => {
       icon: <FiSmartphone size={48} />,
     },
     {
-      itemName: "Laptop / Desktops",
+      itemName: "Laptop",
       description: "Dispose of your old laptops in an eco-friendly way.",
       recyclingProcess:
         "Our recycling process adheres to environmental standards.",
