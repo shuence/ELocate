@@ -1,3 +1,4 @@
+import { facility } from "@/app/e-facilities/data/facility";
 import {
   getEmail,
   getPhoneNumber,
@@ -370,7 +371,7 @@ if (isLoading) {
             className="w-full p-2 sign-field rounded-md placeholder:font-light placeholder:text-gray-500"
           >
             <option value="">Select Facility</option>
-            {facilityData.map((facility) => (
+            {facility.map((facility) => (
               <option key={facility.name} value={facility.name}>
                 {facility.name}
               </option>
