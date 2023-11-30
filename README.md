@@ -15,6 +15,12 @@ Here you can view the deployed version
 ![image](https://github.com/shuence/ELocate/assets/65482186/930b1433-3d1b-4a32-a3c5-5f7f75ebbabc)
 ![image](https://github.com/shuence/ELocate/assets/65482186/b48752ab-dc1e-48ea-9f83-5a7d47d50ccf)
 
+## Videos 
+
+[Intro To Elocate Video in Short But In Detail]("https://youtu.be/rEyCnsLWbJU")
+
+[Prototype Video]("https://youtu.be/3IN58Qo_FvA")
+
 
 ## Setup
 
