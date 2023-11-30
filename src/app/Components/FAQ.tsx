@@ -4,33 +4,39 @@ import { Container, Row, Col } from "reactstrap";
 import { RiArrowDropDownLine, RiArrowDropUpLine } from "react-icons/ri";
 
 const FAQ = () => {
-  const faqData = [
-    {
-      question: "What is the best time to visit this destination?",
-      answer:
-        "The best time to visit this destination is during the months of [insert best months here]. The weather is pleasant, and you can enjoy various outdoor activities without extreme heat or cold.",
-    },
-    {
-      question: "How do I book a tour package?",
-      answer:
-        "Booking a tour package is simple. You can either visit our website and book online, or you can contact our customer support team and they will assist you with the booking process.",
-    },
-    {
-      question: "Are there any special discounts for group bookings?",
-      answer:
-        "Yes, we offer special discounts for group bookings. If you are planning to travel with a group, please get in touch with our customer support team to avail of group discounts.",
-    },
-    {
-      question: "What kind of accommodations do you provide?",
-      answer:
-        "We provide a range of accommodations, including luxury hotels, budget-friendly guesthouses, and cozy homestays. You can choose the type of accommodation that suits your preferences and budget.",
-    },
-    {
-      question: "Do you offer travel insurance?",
-      answer:
-        "Yes, we offer travel insurance for our customers. Travel insurance provides coverage for medical emergencies, trip cancellations, lost baggage, and other unforeseen events during your journey.",
-    },
-  ];
+    const faqData = [
+        {
+          question: "How do I locate e-waste recycling facilities using ELocate?",
+          answer:
+            "ELocate provides a dedicated facility locator page where you can easily find the nearest e-waste recycling facilities. Simply use the map feature to explore facilities in your area and get detailed information.",
+        },
+        {
+          question: "Is the information about e-waste facilities on ELocate verified?",
+          answer:
+            "Yes, ELocate ensures that the information about e-waste recycling facilities is verified. This verification process helps users trust the accuracy and reliability of the facility details provided on the platform.",
+        },
+        {
+          question: "Can I book the recycling of my e-waste through ELocate?",
+          answer:
+            "Absolutely! ELocate offers a user-friendly booking system that allows you to schedule the recycling of your e-waste. Choose the facility, select a convenient pickup date and time, and contribute to sustainable e-waste management.",
+        },
+        {
+          question: "What educational resources are available on ELocate?",
+          answer:
+            "ELocate features an education section with blogs and informative content to raise awareness about the impact of e-waste. Explore articles that highlight the importance of responsible e-waste recycling and its positive effects on the environment.",
+        },
+        {
+          question: "How can I stay updated on the latest rules and regulations regarding e-waste management?",
+          answer:
+            "ELocate provides a dedicated section that lists the latest government rules and regulations related to e-waste management. Stay informed about the legal aspects of e-waste disposal and contribute to a greener environment.",
+        },
+        {
+          question: "Is there a newsletter for ELocate users?",
+          answer:
+            "Yes, ELocate offers a newsletter signup feature. By subscribing to the newsletter, you'll receive updates, promotions, and valuable information about e-waste recycling. Stay connected with the latest news and initiatives in the e-waste management sector.",
+        },
+      ];
+      
 
   const [activeQuestion, setActiveQuestion] = useState(null);
 
@@ -59,7 +65,7 @@ const FAQ = () => {
                 >
                   <div className="flex items-center justify-between text-center gap-12">
                     <h4 className="text-2xl font-bold">
-                      {item.question}{" "}
+                      {item.question}
                       <span className="text-xl font-semibold ">
                         {activeQuestion === index ? (
                           <RiArrowDropUpLine />
