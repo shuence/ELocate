@@ -215,7 +215,6 @@ if (isLoading) {
   );
 }
   const currentDate = new Date().toISOString().split("T")[0];
-  const currentTime = new Date().getHours() + ":" + new Date().getMinutes();
 
   return (
     <div className="container mx-auto p-8">
@@ -319,7 +318,6 @@ if (isLoading) {
             type="time"
             id="pickupTime"
             value={pickupTime}
-            min={currentTime}
             onChange={(e) => setPickupTime(e.target.value)}
             className="w-full p-2 sign-field rounded-md placeholder:font-light placeholder:text-gray-500"
           />
