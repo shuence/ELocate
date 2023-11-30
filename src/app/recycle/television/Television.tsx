@@ -37,7 +37,7 @@ interface BookingData {
   phone: number;
 }
 
-const Smartphone: React.FC = () => {
+const Television: React.FC = () => {
   const [selectedBrand, setSelectedBrand] = useState("");
   const [selectedModel, setSelectedModel] = useState("");
   const [selectedFacility, setSelectedFacility] = useState("");
@@ -78,94 +78,42 @@ const Smartphone: React.FC = () => {
 
   useEffect(() => {
     const fetchBrandsAndModels = () => {
-      const brandsData: Brand[] = [
+      const televisionData = [
         {
           brand: "Samsung",
-          models: [
-            "Galaxy S21",
-            "Galaxy S20",
-            "Galaxy Note 20",
-            "Galaxy A52",
-            "Galaxy M32",
-          ],
+          models: ["Samsung QN90A Neo QLED 4K TV", "Samsung TU8000 Crystal UHD 4K TV", "Samsung Frame QLED 4K TV", "Samsung Q70T QLED 4K TV", "Samsung TU8500 Crystal UHD 4K TV"],
         },
         {
-          brand: "Apple",
-          models: [
-            "iPhone 13",
-            "iPhone 12",
-            "iPhone SE",
-            "iPhone 11",
-            "iPhone XR",
-          ],
+          brand: "LG",
+          models: ["LG C1 OLED 4K TV", "LG NanoCell 85 Series 4K TV", "LG GX OLED 4K TV", "LG UN7300 4K UHD TV", "LG B9 OLED 4K TV"],
         },
         {
-          brand: "Xiaomi",
-          models: ["Redmi Note 10", "Mi 11X", "Poco X3", "Redmi 9", "Mi 10T"],
+          brand: "Sony",
+          models: ["Sony A80J OLED 4K TV", "Sony X90J Bravia XR 4K TV", "Sony X800H 4K UHD TV", "Sony A9G Master Series OLED 4K TV", "Sony X950H 4K UHD TV"],
         },
         {
-          brand: "OnePlus",
-          models: [
-            "OnePlus 9 Pro",
-            "OnePlus 9",
-            "OnePlus 8T",
-            "OnePlus Nord",
-            "OnePlus 8",
-          ],
+          brand: "TCL",
+          models: ["TCL 6-Series 4K QLED TV", "TCL 5-Series 4K QLED TV", "TCL 4-Series 4K UHD TV", "TCL 8-Series QLED 4K TV", "TCL 3-Series HD LED Roku Smart TV"],
         },
         {
-          brand: "Realme",
-          models: [
-            "Realme 8 Pro",
-            "Realme Narzo 30 Pro",
-            "Realme 7",
-            "Realme C11",
-            "Realme X7 Max",
-          ],
+          brand: "Vizio",
+          models: ["Vizio P-Series Quantum X 4K TV", "Vizio M-Series Quantum 4K TV", "Vizio OLED 4K TV", "Vizio V-Series 4K UHD TV", "Vizio D-Series HD LED TV"],
         },
         {
-          brand: "Vivo",
-          models: [
-            "Vivo V21",
-            "Vivo Y73",
-            "Vivo X60 Pro",
-            "Vivo S1 Pro",
-            "Vivo Y20G",
-          ],
+          brand: "Sony",
+          models: ["Sony A80J OLED 4K TV", "Sony X90J Bravia XR 4K TV", "Sony X800H 4K UHD TV", "Sony A9G Master Series OLED 4K TV", "Sony X950H 4K UHD TV"],
         },
         {
-          brand: "OPPO",
-          models: [
-            "OPPO F19 Pro",
-            "OPPO Reno 5 Pro",
-            "OPPO A74",
-            "OPPO A53",
-            "OPPO Find X3 Pro",
-          ],
+          brand: "Hisense",
+          models: ["Hisense U8G Quantum Series 4K ULED TV", "Hisense H9G Quantum Series 4K ULED TV", "Hisense H8G Quantum Series 4K ULED TV", "Hisense H65G Series 4K UHD TV", "Hisense H4G Series HD LED Roku TV"],
         },
         {
-          brand: "Nokia",
-          models: [
-            "Nokia 5.4",
-            "Nokia 3.4",
-            "Nokia 8.3",
-            "Nokia 2.4",
-            "Nokia 7.2",
-          ],
-        },
-        {
-          brand: "Motorola",
-          models: [
-            "Moto G60",
-            "Moto G40 Fusion",
-            "Moto G30",
-            "Moto G9 Power",
-            "Moto E7 Power",
-          ],
+          brand: "Panasonic",
+          models: ["Panasonic JX800 4K UHD TV", "Panasonic HX800 4K UHD TV", "Panasonic HZ2000 OLED 4K TV", "Panasonic GX800 4K UHD TV", "Panasonic FX800 4K UHD TV"],
         },
       ];
-
-      setBrands(brandsData);
+            
+      setBrands(televisionData);
       setModels(models);
     };
     fetchBrandsAndModels();
@@ -274,7 +222,7 @@ if (isLoading) {
       <ToastContainer />
 
       <h1 className="text-4xl font-bold mb-6 p-6 text-center">
-        Smartphone Recycling
+        Television Recycling
       </h1>
       <form
         className="grid grid-cols-1 md:grid-cols-2 mx-8 md:mx-0 gap-4 justify-center"
@@ -443,4 +391,4 @@ if (isLoading) {
   );
 };
 
-export default Smartphone;
+export default Television;

@@ -10,8 +10,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 interface Brand {
-  brand: string;
-  models: string[];
+  category: string;
+  items: string[];
 }
 
 interface Facility {
@@ -37,7 +37,7 @@ interface BookingData {
   phone: number;
 }
 
-const Smartphone: React.FC = () => {
+const Accessories: React.FC = () => {
   const [selectedBrand, setSelectedBrand] = useState("");
   const [selectedModel, setSelectedModel] = useState("");
   const [selectedFacility, setSelectedFacility] = useState("");
@@ -69,103 +69,48 @@ const Smartphone: React.FC = () => {
     setSelectedFacility("");
   
     if (brand) {
-      const selectedBrand = brands.find((b) => b.brand === brand);
+      const selectedBrand = brands.find((b) => b.category === brand);
       if (selectedBrand) {
-        setModels(selectedBrand.models);
+        setModels(selectedBrand.items);
       }
     }
   };
 
   useEffect(() => {
     const fetchBrandsAndModels = () => {
-      const brandsData: Brand[] = [
+      const accessoriesData = [
         {
-          brand: "Samsung",
-          models: [
-            "Galaxy S21",
-            "Galaxy S20",
-            "Galaxy Note 20",
-            "Galaxy A52",
-            "Galaxy M32",
-          ],
+          category: "Headphones",
+          items: ["Sony WH-1000XM4", "Bose QuietComfort 35 II", "AirPods Pro", "Sennheiser HD 660 S", "JBL Free X"],
         },
         {
-          brand: "Apple",
-          models: [
-            "iPhone 13",
-            "iPhone 12",
-            "iPhone SE",
-            "iPhone 11",
-            "iPhone XR",
-          ],
+          category: "Chargers",
+          items: ["Anker PowerPort", "Belkin Boost Charge", "Apple 20W USB-C Power Adapter", "Samsung Super Fast Charger", "RAVPower 60W 6-Port USB Charger"],
         },
         {
-          brand: "Xiaomi",
-          models: ["Redmi Note 10", "Mi 11X", "Poco X3", "Redmi 9", "Mi 10T"],
+          category: "Laptop Bags",
+          items: ["SwissGear Travel Gear 1900 Scansmart TSA Laptop Backpack", "AmazonBasics Laptop Backpack", "Targus Drifter II Backpack", "KROSER Laptop Backpack", "Matein Travel Laptop Backpack"],
         },
         {
-          brand: "OnePlus",
-          models: [
-            "OnePlus 9 Pro",
-            "OnePlus 9",
-            "OnePlus 8T",
-            "OnePlus Nord",
-            "OnePlus 8",
-          ],
+          category: "External Hard Drives",
+          items: ["WD Black 5TB P10 Game Drive", "Seagate Backup Plus Slim 2TB", "Samsung T5 Portable SSD", "LaCie Rugged Mini 4TB", "Toshiba Canvio Basics 1TB"],
         },
         {
-          brand: "Realme",
-          models: [
-            "Realme 8 Pro",
-            "Realme Narzo 30 Pro",
-            "Realme 7",
-            "Realme C11",
-            "Realme X7 Max",
-          ],
+          category: "Smartwatches",
+          items: ["Apple Watch Series 7", "Samsung Galaxy Watch 4", "Fitbit Charge 5", "Garmin Venu 2", "Amazfit GTR 3"],
         },
         {
-          brand: "Vivo",
-          models: [
-            "Vivo V21",
-            "Vivo Y73",
-            "Vivo X60 Pro",
-            "Vivo S1 Pro",
-            "Vivo Y20G",
-          ],
+          category: "Mouse and Keyboards",
+          items: ["Logitech MX Master 3", "Razer DeathAdder Elite", "Apple Magic Keyboard", "Corsair K95 RGB Platinum XT", "HP Wireless Elite Keyboard"],
         },
         {
-          brand: "OPPO",
-          models: [
-            "OPPO F19 Pro",
-            "OPPO Reno 5 Pro",
-            "OPPO A74",
-            "OPPO A53",
-            "OPPO Find X3 Pro",
-          ],
-        },
-        {
-          brand: "Nokia",
-          models: [
-            "Nokia 5.4",
-            "Nokia 3.4",
-            "Nokia 8.3",
-            "Nokia 2.4",
-            "Nokia 7.2",
-          ],
-        },
-        {
-          brand: "Motorola",
-          models: [
-            "Moto G60",
-            "Moto G40 Fusion",
-            "Moto G30",
-            "Moto G9 Power",
-            "Moto E7 Power",
-          ],
+          category: "Power Banks",
+          items: ["Anker PowerCore 26800mAh", "RAVPower Portable Charger 20000mAh", "Xiaomi Mi Power Bank 3", "AUKEY Portable Charger 10000mAh", "Samsung Wireless Charger Portable Battery 10,000mAh"],
         },
       ];
+      
 
-      setBrands(brandsData);
+      setBrands(accessoriesData);
       setModels(models);
     };
     fetchBrandsAndModels();
@@ -274,7 +219,7 @@ if (isLoading) {
       <ToastContainer />
 
       <h1 className="text-4xl font-bold mb-6 p-6 text-center">
-        Smartphone Recycling
+        Accessories Recycling
       </h1>
       <form
         className="grid grid-cols-1 md:grid-cols-2 mx-8 md:mx-0 gap-4 justify-center"
@@ -288,7 +233,7 @@ if (isLoading) {
             htmlFor="brand"
             className="block text-2xl font-medium text-gray-600"
           >
-            Select Brand:
+            Select Category:
           </label>
           <select
             id="brand"
@@ -296,10 +241,10 @@ if (isLoading) {
             onChange={handleBrandChange}
             className="w-full p-2 sign-field rounded-md placeholder:font-light placeholder:text-gray-500"
           >
-            <option value="">Select Brand</option>
+            <option value="">Select Category</option>
             {brands.map((brand) => (
-              <option key={brand.brand} value={brand.brand}>
-                {brand.brand}
+              <option key={brand.category} value={brand.category}>
+                {brand.category}
               </option>
             ))}
           </select>
@@ -310,7 +255,7 @@ if (isLoading) {
             htmlFor="model"
             className="block text-2xl font-medium text-gray-600"
           >
-            Select Model:
+            Select Items:
           </label>
           <select
             id="model"
@@ -318,7 +263,7 @@ if (isLoading) {
             onChange={(e) => setSelectedModel(e.target.value)}
             className="w-full p-2 sign-field rounded-md placeholder:font-light placeholder:text-gray-500"
           >
-            <option value="">Select Model</option>
+            <option value="">Select Items</option>
             {models.map((model) => (
               <option key={model} value={model}>
                 {model}
@@ -443,4 +388,4 @@ if (isLoading) {
   );
 };
 
-export default Smartphone;
+export default Accessories;

@@ -37,7 +37,7 @@ interface BookingData {
   phone: number;
 }
 
-const Smartphone: React.FC = () => {
+const Refrigerator: React.FC = () => {
   const [selectedBrand, setSelectedBrand] = useState("");
   const [selectedModel, setSelectedModel] = useState("");
   const [selectedFacility, setSelectedFacility] = useState("");
@@ -78,94 +78,43 @@ const Smartphone: React.FC = () => {
 
   useEffect(() => {
     const fetchBrandsAndModels = () => {
-      const brandsData: Brand[] = [
+      const refrigeratorData = [
         {
           brand: "Samsung",
-          models: [
-            "Galaxy S21",
-            "Galaxy S20",
-            "Galaxy Note 20",
-            "Galaxy A52",
-            "Galaxy M32",
-          ],
+          models: ["Samsung RT28M3022S8 Double Door Refrigerator", "Samsung RT42M553ES8 Top Freezer Refrigerator", "Samsung RS74T5F01B4 Side-by-Side Refrigerator", "Samsung RT65K7058BS Frost-Free Double Door Refrigerator", "Samsung RR20T182XR8/NL Single Door Refrigerator"],
         },
         {
-          brand: "Apple",
-          models: [
-            "iPhone 13",
-            "iPhone 12",
-            "iPhone SE",
-            "iPhone 11",
-            "iPhone XR",
-          ],
+          brand: "LG",
+          models: ["LG GL-I292RPZL Double Door Refrigerator", "LG GL-T292RPZY Double Door Frost-Free Refrigerator", "LG GC-B247SLUV Side-by-Side Refrigerator", "LG GL-B201AHPY Single Door Refrigerator", "LG GL-D201ASOX Single Door Refrigerator"],
         },
         {
-          brand: "Xiaomi",
-          models: ["Redmi Note 10", "Mi 11X", "Poco X3", "Redmi 9", "Mi 10T"],
+          brand: "Whirlpool",
+          models: ["Whirlpool IF INV CNV 278 ELT Double Door Refrigerator", "Whirlpool NEO IF 278 ELT Double Door Refrigerator", "Whirlpool FP 263D Protton Roy Triple Door Refrigerator", "Whirlpool WDE 205 CLS 3S Single Door Refrigerator", "Whirlpool WDE 205 ROY 3S Single Door Refrigerator"],
         },
         {
-          brand: "OnePlus",
-          models: [
-            "OnePlus 9 Pro",
-            "OnePlus 9",
-            "OnePlus 8T",
-            "OnePlus Nord",
-            "OnePlus 8",
-          ],
+          brand: "Haier",
+          models: ["Haier HRF 618SS Side-by-Side Refrigerator", "Haier HRB-2764PBG-E Double Door Refrigerator", "Haier HED-20FDS Single Door Refrigerator", "Haier HRD-2204BS-R 5 Star Single Door Refrigerator", "Haier HRF-619KS Side-by-Side Refrigerator"],
         },
         {
-          brand: "Realme",
-          models: [
-            "Realme 8 Pro",
-            "Realme Narzo 30 Pro",
-            "Realme 7",
-            "Realme C11",
-            "Realme X7 Max",
-          ],
+          brand: "Godrej",
+          models: ["Godrej RT EON 311 PD 3.4 Double Door Refrigerator", "Godrej RD EDGEPRO 225 C 33 TAFQ Single Door Refrigerator", "Godrej RF GF 2362PTH 236 L Double Door Refrigerator", "Godrej RT EON 241 P 3.4 Double Door Refrigerator", "Godrej RD EDGESX 185 CT 2.2 Single Door Refrigerator"],
         },
         {
-          brand: "Vivo",
-          models: [
-            "Vivo V21",
-            "Vivo Y73",
-            "Vivo X60 Pro",
-            "Vivo S1 Pro",
-            "Vivo Y20G",
-          ],
+          brand: "Panasonic",
+          models: ["Panasonic NR-BG311VSS3 Double Door Refrigerator", "Panasonic NR-BR347VSX1 Double Door Refrigerator", "Panasonic NR-A195STWRT Single Door Refrigerator", "Panasonic NR-BS60MSX1 Side-by-Side Refrigerator", "Panasonic NR-A195RSTL Single Door Refrigerator"],
         },
         {
-          brand: "OPPO",
-          models: [
-            "OPPO F19 Pro",
-            "OPPO Reno 5 Pro",
-            "OPPO A74",
-            "OPPO A53",
-            "OPPO Find X3 Pro",
-          ],
+          brand: "Bosch",
+          models: ["Bosch KDN43VS30I Double Door Refrigerator", "Bosch KDN56XI30I Side-by-Side Refrigerator", "Bosch KDN30VS30I Double Door Refrigerator", "Bosch KAN56V40AU Side-by-Side Refrigerator", "Bosch KDN46XI30I Double Door Refrigerator"],
         },
         {
-          brand: "Nokia",
-          models: [
-            "Nokia 5.4",
-            "Nokia 3.4",
-            "Nokia 8.3",
-            "Nokia 2.4",
-            "Nokia 7.2",
-          ],
-        },
-        {
-          brand: "Motorola",
-          models: [
-            "Moto G60",
-            "Moto G40 Fusion",
-            "Moto G30",
-            "Moto G9 Power",
-            "Moto E7 Power",
-          ],
+          brand: "SAMSUNG",
+          models: ["SAMSUNG RS73R5561M9 689 L Frost Free Side-by-Side Refrigerator", "SAMSUNG RT28T3483S8 253 L 3 Star Double Door Refrigerator", "SAMSUNG RR21T2G2X9U 198 L 5 Star Single Door Refrigerator", "SAMSUNG RT30T3743S9 275 L 3 Star Double Door Refrigerator", "SAMSUNG RR22T272YS8 212 L 3 Star Single Door Refrigerator"],
         },
       ];
+            
 
-      setBrands(brandsData);
+      setBrands(refrigeratorData);
       setModels(models);
     };
     fetchBrandsAndModels();
@@ -274,7 +223,7 @@ if (isLoading) {
       <ToastContainer />
 
       <h1 className="text-4xl font-bold mb-6 p-6 text-center">
-        Smartphone Recycling
+        Refrigerator Recycling
       </h1>
       <form
         className="grid grid-cols-1 md:grid-cols-2 mx-8 md:mx-0 gap-4 justify-center"
@@ -443,4 +392,4 @@ if (isLoading) {
   );
 };
 
-export default Smartphone;
+export default Refrigerator;

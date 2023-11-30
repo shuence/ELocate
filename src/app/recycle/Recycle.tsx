@@ -3,6 +3,7 @@ import { FiSmartphone, FiHeadphones, FiTv } from "react-icons/fi";
 import { GiWashingMachine } from "react-icons/gi";
 import { RiFridgeFill } from "react-icons/ri";
 import { FaLaptop } from "react-icons/fa";
+import { MdOutlineDevicesOther } from "react-icons/md";
 import Link from "next/link";
 
 interface RecycleCardProps {
@@ -59,31 +60,12 @@ const Recycle: React.FC = () => {
       icon: <RiFridgeFill size={48} />,
     },
     {
-      itemName: "Washing Machine",
-      description: "Responsible recycling of old washing machines.",
+      itemName: "Other",
+      description: "Responsible recycling of any other Electronic Devices.",
       recyclingProcess:
         "Proper dismantling and recycling of metal and electronic components.",
-      specialInstructions:
-        "Ensure the washing machine is empty before recycling.",
-      icon: <GiWashingMachine size={48} />,
-    },
-    {
-      itemName: "Washing Machine",
-      description: "Responsible recycling of old washing machines.",
-      recyclingProcess:
-        "Proper dismantling and recycling of metal and electronic components.",
-      specialInstructions:
-        "Ensure the washing machine is empty before recycling.",
-      icon: <GiWashingMachine size={48} />,
-    },
-    {
-      itemName: "Washing Machine",
-      description: "Responsible recycling of old washing machines.",
-      recyclingProcess:
-        "Proper dismantling and recycling of metal and electronic components.",
-      specialInstructions:
-        "Ensure the washing machine is empty before recycling.",
-      icon: <GiWashingMachine size={48} />,
+      specialInstructions: "Ensure it's not working before recycling.",
+      icon: <MdOutlineDevicesOther size={48} />,
     },
   ];
 
@@ -115,10 +97,13 @@ const RecycleCard: React.FC<RecycleCardProps> = ({
       <p className="text-gray-600">{description}</p>
       <p className="text-gray-600">{recyclingProcess}</p>
       <p className="text-gray-600">{specialInstructions}</p>
-      <Link href={`/recycle/${itemName.toLowerCase()}`}
-         className="btn-md btn-primary mt-2">Recycle Now
+      <Link
+        href={`/recycle/${itemName.toLowerCase()}`}
+        className="btn-md btn-primary mt-2"
+      >
+        Recycle Now
       </Link>
-      </div>
+    </div>
   );
 };
 

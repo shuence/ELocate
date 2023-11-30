@@ -1,3 +1,4 @@
+import { facility } from "@/app/e-facilities/data/facility";
 import {
   getEmail,
   getPhoneNumber,
@@ -37,7 +38,7 @@ interface BookingData {
   phone: number;
 }
 
-const Smartphone: React.FC = () => {
+const Laptop: React.FC = () => {
   const [selectedBrand, setSelectedBrand] = useState("");
   const [selectedModel, setSelectedModel] = useState("");
   const [selectedFacility, setSelectedFacility] = useState("");
@@ -78,94 +79,77 @@ const Smartphone: React.FC = () => {
 
   useEffect(() => {
     const fetchBrandsAndModels = () => {
-      const brandsData: Brand[] = [
+      const laptopBrandsData = [
         {
-          brand: "Samsung",
+          brand: "Dell",
           models: [
-            "Galaxy S21",
-            "Galaxy S20",
-            "Galaxy Note 20",
-            "Galaxy A52",
-            "Galaxy M32",
+            "Dell XPS 13",
+            "Dell Inspiron 14",
+            "Dell G3",
+            "Dell Latitude",
+            "Dell Alienware M15",
+          ],
+        },
+        {
+          brand: "HP",
+          models: [
+            "HP Spectre x360",
+            "HP Pavilion",
+            "HP Omen",
+            "HP Elite Dragonfly",
+            "HP Envy",
+          ],
+        },
+        {
+          brand: "Lenovo",
+          models: [
+            "Lenovo ThinkPad X1 Carbon",
+            "Lenovo Legion Y540",
+            "Lenovo IdeaPad",
+            "Lenovo Yoga",
+            "Lenovo ThinkBook",
+          ],
+        },
+        {
+          brand: "Asus",
+          models: [
+            "Asus ROG Zephyrus G14",
+            "Asus VivoBook",
+            "Asus TUF Gaming",
+            "Asus ZenBook",
+            "Asus ROG Strix",
+          ],
+        },
+        {
+          brand: "Acer",
+          models: [
+            "Acer Predator Helios 300",
+            "Acer Aspire",
+            "Acer Swift",
+            "Acer Nitro",
+            "Acer Chromebook",
           ],
         },
         {
           brand: "Apple",
-          models: [
-            "iPhone 13",
-            "iPhone 12",
-            "iPhone SE",
-            "iPhone 11",
-            "iPhone XR",
-          ],
+          models: ["MacBook Air", "MacBook Pro"],
         },
         {
-          brand: "Xiaomi",
-          models: ["Redmi Note 10", "Mi 11X", "Poco X3", "Redmi 9", "Mi 10T"],
+          brand: "MSI",
+          models: ["MSI GS65 Stealth", "MSI Prestige", "MSI Modern", "MSI Alpha"],
         },
         {
-          brand: "OnePlus",
-          models: [
-            "OnePlus 9 Pro",
-            "OnePlus 9",
-            "OnePlus 8T",
-            "OnePlus Nord",
-            "OnePlus 8",
-          ],
+          brand: "Sony",
+          models: ["Sony VAIO S", "Sony VAIO E"],
         },
         {
-          brand: "Realme",
-          models: [
-            "Realme 8 Pro",
-            "Realme Narzo 30 Pro",
-            "Realme 7",
-            "Realme C11",
-            "Realme X7 Max",
-          ],
-        },
-        {
-          brand: "Vivo",
-          models: [
-            "Vivo V21",
-            "Vivo Y73",
-            "Vivo X60 Pro",
-            "Vivo S1 Pro",
-            "Vivo Y20G",
-          ],
-        },
-        {
-          brand: "OPPO",
-          models: [
-            "OPPO F19 Pro",
-            "OPPO Reno 5 Pro",
-            "OPPO A74",
-            "OPPO A53",
-            "OPPO Find X3 Pro",
-          ],
-        },
-        {
-          brand: "Nokia",
-          models: [
-            "Nokia 5.4",
-            "Nokia 3.4",
-            "Nokia 8.3",
-            "Nokia 2.4",
-            "Nokia 7.2",
-          ],
-        },
-        {
-          brand: "Motorola",
-          models: [
-            "Moto G60",
-            "Moto G40 Fusion",
-            "Moto G30",
-            "Moto G9 Power",
-            "Moto E7 Power",
-          ],
+          brand: "LG",
+          models: ["LG Gram"],
         },
       ];
+      
 
-      setBrands(brandsData);
+      setBrands(laptopBrandsData);
       setModels(models);
     };
     fetchBrandsAndModels();
@@ -179,7 +163,7 @@ const Smartphone: React.FC = () => {
  const handleSubmit = async () => {
   const recycleItem = selectedBrand + selectedModel;
 
-  if (isAuthenticated() && facilityData.length > 0) {
+  if (isAuthenticated() && facility.length > 0) {
     if (
       recycleItem &&
       selectedFacility &&
@@ -274,7 +258,7 @@ if (isLoading) {
       <ToastContainer />
 
       <h1 className="text-4xl font-bold mb-6 p-6 text-center">
-        Smartphone Recycling
+        Laptop Recycling
       </h1>
       <form
         className="grid grid-cols-1 md:grid-cols-2 mx-8 md:mx-0 gap-4 justify-center"
@@ -443,4 +427,4 @@ if (isLoading) {
   );
 };
 
-export default Smartphone;
+export default Laptop;
