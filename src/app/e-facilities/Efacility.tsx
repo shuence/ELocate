@@ -76,7 +76,7 @@ const FacilityMap: React.FC = () => {
   };
 
   useEffect(() => {
-    fetch('http://localhost:4000/api/v1/facility')
+    fetch('https://elocate-server.onrender.com/api/v1/facility')
       .then((response) => response.json())
       .then((data) => {
         setFacilityData(data);
@@ -148,6 +148,7 @@ const FacilityMap: React.FC = () => {
               facility.lat,
               facility.lon
             );
+            console.log(facility.lon)
       
             if (distance < nearestDistance) {
               nearestFacility = facility;
@@ -170,7 +171,7 @@ const FacilityMap: React.FC = () => {
 
       getAddress(sortedFacilities)
         .then((newAddress) => {
-          setAddresses(newAddress);
+          setAddresses([]);
 
           sortedFacilities.forEach((facility, index) => {
             const popup = new Popup().setHTML(
@@ -223,6 +224,7 @@ const FacilityMap: React.FC = () => {
             popup.on("close", () => {
               setSelectedFacility(null);
             });
+            setAddresses((prevAddresses) => [...prevAddresses, newAddress[index]]);
           });
         })
         .catch((error) => console.error("Error fetching addresses:", error));
