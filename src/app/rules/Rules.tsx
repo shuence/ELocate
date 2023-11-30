@@ -91,17 +91,25 @@ const Rules = (props: Props) => {
         </p>
       </div>
       <div className="flex flex-col w-1/3 px-4">
-        <div className="flex flex-col w-full h-104 my-4 bg-gray-400 overflow-y-auto p-4">
+        <div className="flex flex-col w-full h-104 projects my-4 bg-gray-400 overflow-y-auto p-4">
           <h2 className="text-2xl font-bold mb-4 text-center">Notification</h2>
-          <p>
+          <p className="mb-4">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non
+            felis a libero eleifend venenatis.
+          </p>
+          <p className="mb-4">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non
             felis a libero eleifend venenatis.
           </p>
           {/* Add more notification content here */}
         </div>
-        <div className="flex flex-col w-full h-104 my-4 bg-gray-400 overflow-y-auto p-4">
+        <div className="flex flex-col w-full h-104 my-4 projects bg-gray-400 overflow-y-auto p-4">
           <h2 className="text-2xl font-bold mb-4 text-center">News</h2>
-          <p>
+          <p className="mb-4">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non
+            felis a libero eleifend venenatis.
+          </p>
+          <p className="mb-4">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non
             felis a libero eleifend venenatis.
           </p>

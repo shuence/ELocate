@@ -37,7 +37,7 @@ interface BookingData {
   phone: number;
 }
 
-const Accessories: React.FC = () => {
+const Others: React.FC = () => {
   const [selectedBrand, setSelectedBrand] = useState("");
   const [selectedModel, setSelectedModel] = useState("");
   const [selectedFacility, setSelectedFacility] = useState("");
@@ -78,7 +78,7 @@ const Accessories: React.FC = () => {
 
   useEffect(() => {
     const fetchBrandsAndModels = () => {
-      const accessoriesData = [
+      const OthersData = [
         {
           category: "Headphones",
           items: ["Sony WH-1000XM4", "Bose QuietComfort 35 II", "AirPods Pro", "Sennheiser HD 660 S", "JBL Free X"],
@@ -110,7 +110,7 @@ const Accessories: React.FC = () => {
       ];
       
 
-      setBrands(accessoriesData);
+      setBrands(OthersData);
       setModels(models);
     };
     fetchBrandsAndModels();
@@ -219,7 +219,7 @@ if (isLoading) {
       <ToastContainer />
 
       <h1 className="text-4xl font-bold mb-6 p-6 text-center">
-        Accessories Recycling
+        Others Recycling
       </h1>
       <form
         className="grid grid-cols-1 md:grid-cols-2 mx-8 md:mx-0 gap-4 justify-center"
@@ -388,4 +388,4 @@ if (isLoading) {
   );
 };
 
-export default Accessories;
+export default Others;

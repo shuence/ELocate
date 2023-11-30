@@ -76,7 +76,7 @@ const FacilityMap: React.FC = () => {
   };
 
   useEffect(() => {
-    fetch('http://localhost:4000/api/v1/facility')
+    fetch("https://elocate-server.onrender.com/api/v1/facility")
       .then((response) => response.json())
       .then((data) => {
         setFacilityData(data);
