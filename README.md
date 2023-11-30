@@ -4,6 +4,8 @@ E waste Facility Locator & Recycling Platform ♻️
 
 A i-nnovate Hackathon by intelliswift Finalist Project **Team Spam Byte From Deogiri Institute of Engineering And Management Studies Chh. Sambhajinagar.**
 
+[Intro To Elocate Video in Short But In Detail](https://youtu.be/rEyCnsLWbJU)
+
 
 ## Live Preview
 
@@ -16,8 +18,6 @@ Here you can view the deployed version
 ![image](https://github.com/shuence/ELocate/assets/65482186/b48752ab-dc1e-48ea-9f83-5a7d47d50ccf)
 
 ## Videos 
-
-[Intro To Elocate Video in Short But In Detail](https://youtu.be/rEyCnsLWbJU)
 
 [Prototype Video](https://youtu.be/3IN58Qo_FvA)
 
