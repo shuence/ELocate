@@ -1,4 +1,3 @@
-import { facility } from "@/app/e-facilities/data/facility";
 import {
   getEmail,
   getPhoneNumber,
@@ -53,7 +52,7 @@ const Laptop: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:4000/api/v1/facility")
+    fetch("https://elocate-server.onrender.com/api/v1/facility")
       .then((response) => response.json())
       .then((data) => {
         setFacilityData(data);
@@ -163,7 +162,7 @@ const Laptop: React.FC = () => {
  const handleSubmit = async () => {
   const recycleItem = selectedBrand + selectedModel;
 
-  if (isAuthenticated() && facility.length > 0) {
+  if (isAuthenticated() && facilityData.length > 0) {
     if (
       recycleItem &&
       selectedFacility &&
