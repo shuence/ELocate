@@ -155,7 +155,7 @@ const user = getUser();
           </div>
                 ) : (
                   <>
-                      <Link href="/sign-up" className="btn-md btn-outline md:mr-4">SignUp</Link>
+                      <Link href="/sign-in" className="btn-md btn-outline md:mr-4">SignIn</Link>
                   </>
                 )}
         <button
