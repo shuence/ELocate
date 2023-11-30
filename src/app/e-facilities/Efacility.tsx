@@ -11,9 +11,10 @@ import Link from "next/link";
 import { facility } from "./data/facility";
 
 interface Facility {
+  address: string;
   distance: number;
   name: string;
-  capacity: string;
+  capacity: number;
   lon: number;
   lat: number;
   contact: string;
@@ -49,31 +50,7 @@ const FacilityMap: React.FC = () => {
     });
   }, []);
 
-  const getAddress = async (facilities: Facility[]): Promise<string[]> => {
-    try {
-      const addresses = await Promise.all(
-        facilities.map(async (facility) => {
-          const response = await fetch(
-            `https://api.mapbox.com/geocoding/v5/mapbox.places/${facility.lon},${facility.lat}.json?access_token=${mapboxgl.accessToken}`
-          );
-          const data = await response.json();
-          const address =
-            data.features[0]?.place_name || "Address not available";
-          const uniqueWordsSet = new Set(address.split(", "));
-          const uniqueWordsArray = Array.from(uniqueWordsSet);
-          const newAddress = uniqueWordsArray.join(", ");
 
-          setAddresses((prevAddresses) => [...prevAddresses, newAddress]);
-          return newAddress;
-        })
-      );
-
-      return addresses;
-    } catch (error) {
-      console.error("Error fetching addresses:", error);
-      return [];
-    }
-  };
 
   useEffect(() => {
     if (clientLocation) {
@@ -159,17 +136,13 @@ const FacilityMap: React.FC = () => {
 
       userMarkerRef.current = userMarker;
 
-      getAddress(sortedFacilities)
-        .then((newAddress) => {
-          setAddresses(newAddress);
-
           sortedFacilities.forEach((facility, index) => {
             const popup = new Popup().setHTML(
               `<h3 class="font-bold text-emerald-600 text-2xl">${
                 facility.name
               }</h3>
               <p>Capacity: ${facility.capacity}</p>
-              <p>Address: ${newAddress[index]}</p>
+              <p>Address: ${facility.address}</p>
               <p class="text-gray-600">Contact: ${facility.contact}</p>
               <p class="text-gray-600">Time: ${facility.time}</p>
               <p class="text-gray-600 ">Distance: ${facility.distance.toFixed(
@@ -215,9 +188,7 @@ const FacilityMap: React.FC = () => {
               setSelectedFacility(null);
             });
           });
-        })
-        .catch((error) => console.error("Error fetching addresses:", error));
-
+      
       return () => {
         map.remove();
       };
@@ -347,7 +318,7 @@ const FacilityMap: React.FC = () => {
               )}
             </div>
             <p className="text-gray-600">Capacity: {info.capacity}</p>
-            <p className="text-gray-600">{addresses[index]}</p>
+            <p className="text-gray-600">{info.address}</p>
             <div className="my-2">
               <p className="text-lg text-gray-600">Contact: {info.contact}</p>
               <p className="text-lg text-gray-600">Time: {info.time}</p>
