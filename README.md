@@ -17,10 +17,9 @@ Here you can view the deployed version
 
 ## Videos 
 
-[Intro To Elocate Video in Short But In Detail]("https://youtu.be/rEyCnsLWbJU")
+[Intro To Elocate Video in Short But In Detail](https://youtu.be/rEyCnsLWbJU)
 
-[Prototype Video]("https://youtu.be/3IN58Qo_FvA")
-
+[Prototype Video](https://youtu.be/3IN58Qo_FvA)
 
 ## Setup
 
