@@ -220,7 +220,8 @@ const Footer = () => {
                   <Link
                     target="_blank"
                     rel="noopener noreferrer"
-                    href="/"
+                    href="#"
+                    aria-label="linkedin"
                     className="social-link"
                   >
                     <IonIcon icon={logoLinkedin}></IonIcon>
@@ -230,7 +231,8 @@ const Footer = () => {
                   <Link
                     target="_blank"
                     rel="noopener noreferrer"
-                    href="/"
+                    href="#"
+                    aria-label="Instagram"
                     className="social-link"
                   >
                     <IonIcon icon={logoInstagram}></IonIcon>
@@ -240,7 +242,8 @@ const Footer = () => {
                   <Link
                     target="_blank"
                     rel="noopener noreferrer"
-                    href="/"
+                    href="#"
+                    aria-label="Twitter"
                     className="social-link"
                   >
                     <IonIcon icon={logoTwitter}></IonIcon>
@@ -250,7 +253,8 @@ const Footer = () => {
                   <Link
                     target="_blank"
                     rel="noopener noreferrer"
-                    href="/"
+                    href="#"
+                    aria-label="Whatsapp"
                     className="social-link"
                   >
                     <IonIcon icon={logoWhatsapp}></IonIcon>
@@ -265,7 +269,7 @@ const Footer = () => {
         <div className="container">
         <p className="copyright">
             &copy; 2023 ELocate | All Rights Reserved by{" "}
-            <Link href="/" className="copyright-link">
+            <Link href="#" className="copyright-link">
               Spam Byte
             </Link>
           </p>

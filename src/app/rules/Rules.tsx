@@ -5,8 +5,8 @@ type Props = {};
 
 const Rules = (props: Props) => {
   return (
-    <div className="flex section container">
-      <div className="w-2/3 px-4">
+<div className="flex flex-col section container">
+      <div className="w-full md:w-2/3 px-4">
         <h2 className="text-3xl font-bold mb-4">
           Latest Indian E-Waste Management Rules
         </h2>
@@ -90,8 +90,8 @@ const Rules = (props: Props) => {
           products in an environmentally sound
         </p>
       </div>
-      <div className="flex flex-col w-1/3 px-4">
-        <div className="flex flex-col w-full h-104 projects my-4 bg-gray-400 overflow-y-auto p-4">
+      <div className="flex flex-col w-full md:w-1/3 px-4">
+        <div className="flex flex-col w-full my-4 projects bg-gray-400 overflow-y-auto p-4">
           <h2 className="text-2xl font-bold mb-4 text-center">Notification</h2>
           <p className="mb-4">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non
@@ -103,8 +103,8 @@ const Rules = (props: Props) => {
           </p>
           {/* Add more notification content here */}
         </div>
-        <div className="flex flex-col w-full h-104 my-4 projects bg-gray-400 overflow-y-auto p-4">
-          <h2 className="text-2xl font-bold mb-4 text-center">News</h2>
+        <div className="flex flex-col w-full my-4 projects bg-gray-400 overflow-y-auto p-4">
+          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-center">News</h2>
           <p className="mb-4">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non
             felis a libero eleifend venenatis.
