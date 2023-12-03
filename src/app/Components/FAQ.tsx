@@ -49,8 +49,8 @@ const FAQ = () => {
   };
 
   return (
-    <section>
-      <Container>
+    <section className="md:mb-40">
+      <Container >
         <Row>
           <Col>
             <h2 className="text-center text-3xl">Frequently Asked Questions</h2>

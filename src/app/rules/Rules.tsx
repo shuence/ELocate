@@ -5,9 +5,9 @@ type Props = {};
 
 const Rules = (props: Props) => {
   return (
-<div className="flex flex-col section container">
-      <div className="w-full md:w-2/3 px-4">
-        <h2 className="text-3xl font-bold mb-4">
+<div className="flex flex-col section  container">
+      <div className="w-full mx-auto text-2xl px-4">
+        <h2 className="text-3xl text-emerald-600 font-bold mb-4">
           Latest Indian E-Waste Management Rules
         </h2>
         <p className="mb-2"></p>
@@ -32,7 +32,7 @@ const Rules = (props: Props) => {
           Government hereby makes the following rules, namely:
         </p>
 
-        <h3 className="text-xl font-bold mb-2">CHAPTER I</h3>
+        <h3 className="text-3xl font-bold mb-2 text-emerald-600">CHAPTER I</h3>
         <p className="mb-2">
           <strong>Preliminary</strong>
         </p>
@@ -76,7 +76,7 @@ const Rules = (props: Props) => {
           </li>
         </ul>
 
-        <h3 className="text-xl font-bold mb-2">CHAPTER II</h3>
+        <h3 className="text-3xl font-bold mb-2 text-emerald-600">CHAPTER II</h3>
         <p className="mb-2">
           <strong>Responsibility of Producers</strong>
         </p>
@@ -90,21 +90,35 @@ const Rules = (props: Props) => {
           products in an environmentally sound
         </p>
       </div>
-      <div className="flex flex-col w-full md:w-1/3 px-4">
-        <div className="flex flex-col w-full my-4 projects bg-gray-400 overflow-y-auto p-4">
-          <h2 className="text-2xl font-bold mb-4 text-center">Notification</h2>
+      <hr className="bg-black mt-20 p-[1px]" />
+      <div className="flex flex-row w-full mx-auto md:w-4/5 gap-10 md:mb-60 md:mt-24 px-4">
+        <div className="flex flex-col w-full my-4 projects shadow-lg bg-gray-400 border border-gray-500 overflow-y-auto p-8">
+        <h2 className="text-2xl md:text-3xl font-bold mb-4 text-center text-emerald-600">Notification</h2>
           <p className="mb-4">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non
             felis a libero eleifend venenatis.
           </p>
+          <p className="mb-4">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non
+            felis a libero eleifend venenatis.
+          </p>
+          <p className="mb-4">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non
+            felis a libero eleifend venenatis.
+          </p>
+         
           <p className="mb-4">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non
             felis a libero eleifend venenatis.
           </p>
           {/* Add more notification content here */}
         </div>
-        <div className="flex flex-col w-full my-4 projects bg-gray-400 overflow-y-auto p-4">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-center">News</h2>
+        <div className="flex flex-col w-full my-4 projects shadow-lg bg-gray-400 border border-gray-500 overflow-y-auto p-8">
+          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-center text-emerald-600">News</h2>
+          <p className="mb-4">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non
+            felis a libero eleifend venenatis.
+          </p>
           <p className="mb-4">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non
             felis a libero eleifend venenatis.

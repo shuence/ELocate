@@ -55,7 +55,7 @@ const Footer = () => {
       });
   };
   return (
-    <footer className="footer projects">
+    <footer className="footer projects shadow-2xl">
       <div className="footer-top md:section">
       <ToastContainer
         className="text-2xl"
