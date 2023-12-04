@@ -1,4 +1,4 @@
-import { facility } from "@/app/e-facilities/data/facility";
+import { facility } from "@/app/data/facility";
 import {
   getEmail,
   getPhoneNumber,

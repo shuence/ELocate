@@ -22,6 +22,7 @@
   --go-green: hsl(145, 63%, 42%);
   --white: hsl(0, 0%, 100%);
   --jet: hsl(0, 0%, 18%);
+  --error: hsl(0, 83%, 54%);
 
   /**
    * typography
@@ -312,6 +313,11 @@ body {
 
 .section-subtitle {
   color: var(--go-green);
+  font-weight: var(--fw-500);
+  font-size: 1.5rem;
+}
+.section-subtitle-error {
+  color: var(--error);
   font-weight: var(--fw-500);
   font-size: 1.5rem;
 }

@@ -1,9 +1,9 @@
 "use client"
 import { useParams } from 'next/navigation';
 import Image from 'next/image';
-import { blogs, randomBlogs } from '../Education';
 import React from 'react';
 import Link from 'next/link';
+import { blogs, randomBlogs } from '@/app/data/blogs';
 
 const BlogDetail: React.FC = () => {
   const { id } = useParams() || {};

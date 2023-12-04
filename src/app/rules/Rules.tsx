@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from "react";
-import { news, notifications, report } from "./data/Notifications";
+import { news, notifications, report } from "../data/Notifications";
 
 type Props = {};
 
