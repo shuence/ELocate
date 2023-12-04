@@ -60,9 +60,6 @@ export const facility = [
     address: "Manikmoti Complex, Office No.13, Katraj, Off, Pune - Satara Rd, opp. Kanchan Hp Gas Agency, Pune, Maharashtra 411046",
   },
   {
-    name: ""
-  },
-  {
     name: "Ewaste Global",
     capacity: 85,
     lon: 73.8180333,
