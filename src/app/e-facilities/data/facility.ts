@@ -1,19 +1,19 @@
 export const facility = [
   {
-    name: "GREEN IT RECYCLING CENTER PVT. LTD.",
-    capacity: 75,
-    lon: 73.6962886,
-    lat: 18.5125614,
+    name: "Green IT Recycling Center Pvt. Ltd.",
+    capacity: 100,
+    lon: 73.8576905,
+    lat: 18.5150587,
     contact: "09822356062",
     time: "10:30 AM - 7:30 PM",
     verified: true,
-    address: "5 Ganeshprasad IInd Floor, 890, Sadashiv Peth, Pune, Maharashtra 411030",
+    address: "5 Ganeshprasad IInd Floor, 890, Sadashiv Peth, Pune, Maharashtra 411030"
   },
   {
     name: "Green e-Bin E-waste Recycling",
     capacity: 50,
-    lon: 75.1856191,
-    lat: 19.8780629,
+    lon: 75.4746199,
+    lat: 19.9464019,
     contact: "09921040501",
     time: "9:00 AM - 7:00 PM",
     verified: false,
@@ -22,8 +22,8 @@ export const facility = [
   {
     name: "ERECON RECYCLING",
     capacity: 80,
-    lon: 75.1856191,
-    lat: 19.8780629,
+    lon: 75.4132847,
+    lat: 19.8675870,
     contact: "09890863108",
     time: "9:00 AM - 5:00 PM",
     verified: false,
@@ -32,8 +32,8 @@ export const facility = [
   {
     name: "PERFECT E- WASTE RECYCLERS",
     capacity: 90,
-    lon: 75.1856191,
-    lat: 19.8780629,
+    lon: 75.3829073,
+    lat: 19.8763005,
     contact: "09156606777",
     time: "9:00 AM - 6:00 PM",
     verified: true,
@@ -52,18 +52,21 @@ export const facility = [
   {
     name: "Kuldeep E-Waste Disposals - E Waste Buyer Pune",
     capacity: 60,
-    lon: 73.0635022,
-    lat: 18.8662721,
+    lon: 73.8526855,
+    lat: 18.4497735,
     contact: "09850289885",
     time: "Open 24 hours",
     verified: true,
     address: "Manikmoti Complex, Office No.13, Katraj, Off, Pune - Satara Rd, opp. Kanchan Hp Gas Agency, Pune, Maharashtra 411046",
   },
   {
+    name: ""
+  },
+  {
     name: "Ewaste Global",
     capacity: 85,
-    lon: 73.0635022,
-    lat: 18.8662721,
+    lon: 73.8180333,
+    lat: 18.5278156,
     contact: "08007980877",
     time: "9:00 AM - 7:00 PM",
     verified: true,
@@ -72,8 +75,8 @@ export const facility = [
   {
     name: "Prabhunath Traders (E-waste Management)",
     capacity: 95,
-    lon: 73.0635022,
-    lat: 18.8662721,
+    lon: 73.8552074,
+    lat: 18.4449912,
     contact: "09326262223",
     time: "Open 24 hours",
     verified: true,
@@ -82,11 +85,21 @@ export const facility = [
   {
     name: "Ecotech Recycling- E waste recycling Mumbai, E-Waste Recycling, E Waste Management in India",
     capacity: 75,
-    lon: 72.7004837,
+    lon: 72.8148102,
     lat: 19.1850185,
     contact: "09004547542",
     time: "9:30 AM - 6:30 PM",
     verified: true,
     address: "301, 3rd Floor, Bldg. No. 11, Commercial Tower, near Trade Center, Bandra Kurla Complex, Bandra East, Mumbai, Maharashtra 400051",
   },
+  {
+    name: "Mahalaxmi E Recyclers Pvt. Ltd.",
+    capacity: 200,
+    lon: 73.9248595,
+    lat: 18.5015732,
+    contact:"0",
+    time: "10:00 AM - 7:00 PM",
+    verified: true,
+    address:"Plot No 77&78, Subplot No 3A, next to Rohini Signs, Ramtekdi Industrial Area, Hadapsar, Pune, Maharashtra 411013"
+  }
 ];

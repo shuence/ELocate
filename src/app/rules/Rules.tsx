@@ -5,7 +5,7 @@ type Props = {};
 
 const Rules = (props: Props) => {
   return (
-<div className="flex flex-col section  container">
+    <div className="flex flex-col section  container">
       <div className="w-full mx-auto text-2xl px-4">
         <h2 className="text-3xl text-emerald-600 font-bold mb-4">
           Latest Indian E-Waste Management Rules
@@ -89,11 +89,110 @@ const Rules = (props: Props) => {
           collect, refurbish, recycle or dispose of e-waste generated from his
           products in an environmentally sound
         </p>
+        <p className="mb-2">
+          <strong>4. Collection of E-Waste from Consumers.</strong>
+        </p>
+        <p>
+          (1) Producers shall set up collection centers for the return of
+          end-of-life electronic products from consumers.
+        </p>
+        <p>
+          (2) Producers shall provide information to consumers about the
+          location of collection centers and the procedures to return
+          end-of-life electronic products.
+        </p>
+        <p className="mb-2">
+          <strong>5. Recycling Targets.</strong>
+        </p>
+        <p>
+          (1) Producers shall achieve the recycling targets specified in
+          Schedule II of these rules.
+        </p>
+        <p>
+          (2) Producers failing to meet the recycling targets shall pay a
+          financial penalty as specified by the Central Pollution Control Board.
+        </p>
+        <p className="mb-2">
+          <strong>6. Labeling of Electronic Products.</strong>
+        </p>
+        <p>
+          (1) Every electronic product shall be labeled with information about
+          environmentally hazardous substances contained in the product and the
+          safe disposal practices.
+        </p>
+        <p>
+          (2) The Central Pollution Control Board shall prescribe the manner and
+          form of labeling.
+        </p>
+        <p className="mb-2">
+          <strong>7. Annual Reporting.</strong>
+        </p>
+        <p>
+          (1) Producers shall submit an annual report to the State Pollution
+          Control Board regarding the collection and recycling of e-waste.
+        </p>
+        <p>
+          (2) The format and details of the annual report shall be specified by
+          the Central Pollution Control Board.
+        </p>
+
+        <p className="mb-2">
+          <strong>8. Transportation and Handling of E-Waste.</strong>
+        </p>
+        <p>
+          (1) Producers and authorized dismantlers shall ensure safe and
+          environmentally sound transportation and handling of e-waste.
+        </p>
+        <p>
+          (2) The vehicles used for transportation shall comply with the
+          guidelines provided by the Central Pollution Control Board.
+        </p>
+
+        <p className="mb-2">
+          <strong>9. Awareness Programs.</strong>
+        </p>
+        <p>
+          (1) Producers shall organize and participate in awareness programs to
+          educate consumers and the general public about the proper disposal of
+          e-waste.
+        </p>
+        <p>
+          (2) The programs shall highlight the environmental impact of improper
+          e-waste disposal and promote responsible recycling practices.
+        </p>
+
+        <p className="mb-2">
+          <strong>10. Prohibition of Unauthorized Handling.</strong>
+        </p>
+        <p>
+          (1) Unauthorized handling, including dismantling and recycling of
+          e-waste, is strictly prohibited.
+        </p>
+        <p>
+          (2) Violation of this rule may lead to legal consequences, including
+          fines and penalties.
+        </p>
+
+        <p className="mb-2">
+          <strong>
+            11. Collaboration with Authorized Treatment and Disposal Facilities.
+          </strong>
+        </p>
+        <p>
+          (1) Producers shall collaborate with authorized treatment and disposal
+          facilities for the environmentally safe processing of e-waste.
+        </p>
+        <p>
+          (2) The facilities must comply with the standards set by regulatory
+          authorities.
+        </p>
       </div>
       <hr className="bg-black mt-20 p-[1px]" />
       <div className="flex flex-row w-full mx-auto md:w-4/5 gap-10 md:mb-60 md:mt-24 px-4">
         <div className="flex flex-col w-full my-4 projects shadow-lg bg-gray-400 border border-gray-500 overflow-y-auto p-8">
-        <h2 className="text-2xl md:text-3xl font-bold mb-4 text-center text-emerald-600">Notification</h2>
+          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-center text-emerald-600">
+            Notification
+          </h2>
           <p className="mb-4">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non
             felis a libero eleifend venenatis.
@@ -106,7 +205,7 @@ const Rules = (props: Props) => {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non
             felis a libero eleifend venenatis.
           </p>
-         
+
           <p className="mb-4">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non
             felis a libero eleifend venenatis.
@@ -114,7 +213,9 @@ const Rules = (props: Props) => {
           {/* Add more notification content here */}
         </div>
         <div className="flex flex-col w-full my-4 projects shadow-lg bg-gray-400 border border-gray-500 overflow-y-auto p-8">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-center text-emerald-600">News</h2>
+          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-center text-emerald-600">
+            News
+          </h2>
           <p className="mb-4">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non
             felis a libero eleifend venenatis.
