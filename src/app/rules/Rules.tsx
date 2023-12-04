@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from "react";
+import { news, notifications, report } from "./data/Notifications";
 
 type Props = {};
 
@@ -188,49 +189,73 @@ const Rules = (props: Props) => {
         </p>
       </div>
       <hr className="bg-black mt-20 p-[1px]" />
-      <div className="flex flex-row w-full mx-auto md:w-4/5 gap-10 md:mb-60 md:mt-24 px-4">
+      <div className="flex flex-col md:flex-row w-full mx-auto md:w-full md:max-h-140 max-h-[130rem] gap-10 md:mt-24 px-4">
         <div className="flex flex-col w-full my-4 projects shadow-lg bg-gray-400 border border-gray-500 overflow-y-auto p-8">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-center text-emerald-600">
+          <h2 className="text-2xl md:text-3xl font-bold mb-4 py-4 shadow-sm text-center text-emerald-600">
             Notification
           </h2>
-          <p className="mb-4">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non
-            felis a libero eleifend venenatis.
-          </p>
-          <p className="mb-4">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non
-            felis a libero eleifend venenatis.
-          </p>
-          <p className="mb-4">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non
-            felis a libero eleifend venenatis.
-          </p>
-
-          <p className="mb-4">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non
-            felis a libero eleifend venenatis.
-          </p>
-          {/* Add more notification content here */}
+          {notifications.map((notification, index) => (
+            <div key={index} className="mb-4 shadow-sm">
+              <h3 className="text-2xl font-semibold mb-2">
+                {notification.title}
+              </h3>
+              <a
+                href={notification.Link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-500 underline mb-4"
+              >
+                View PDF
+              </a>
+            </div>
+          ))}
         </div>
         <div className="flex flex-col w-full my-4 projects shadow-lg bg-gray-400 border border-gray-500 overflow-y-auto p-8">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-center text-emerald-600">
+        <h2 className="text-2xl md:text-3xl font-bold mb-4 py-4 shadow-sm text-center text-emerald-600">
             News
           </h2>
-          <p className="mb-4">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non
-            felis a libero eleifend venenatis.
-          </p>
-          <p className="mb-4">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non
-            felis a libero eleifend venenatis.
-          </p>
-          <p className="mb-4">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non
-            felis a libero eleifend venenatis.
-          </p>
-          {/* Add more news content here */}
+          {news.map((notification, index) => (
+            <div key={index} className="mb-4 shadow-sm">
+              <h3 className="text-2xl font-semibold mb-2">
+                {notification.title}
+              </h3>
+              <p className="text-lg mb-2">{notification.date}</p>
+              <p className="text-xl mb-2">{notification.content}</p>
+              <a
+                href={notification.Link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-500 underline mb-4"
+              >
+                Read More
+              </a>
+            </div>
+          ))}
         </div>
+        <div className="flex flex-col w-full my-4 projects shadow-lg bg-gray-400 border border-gray-500 overflow-y-auto p-8">
+        <h2 className="text-2xl md:text-3xl font-bold mb-4 py-4 shadow-sm text-center text-emerald-600">
+        E-waste Annual Report for Maharashtra
+          </h2>
+          {report.map((notification, index) => (
+            <div key={index} className="mb-4 shadow-sm">
+              <h3 className="text-2xl font-semibold mb-2">
+                {notification.title}
+              </h3>
+              <a
+                href={notification.Link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-500 underline mb-4"
+              >
+                View PDF
+              </a>
+            </div>
+          ))}
+        </div>
+
       </div>
+      <hr className="bg-black mt-20 p-[1px]" />
+
     </div>
   );
 };

@@ -17,6 +17,7 @@ const config: Config = {
 
         '120': "30rem",
         '128': '32rem',
+        '140': '35rem',
         '200': '50rem',
         '240': '60rem',
         '256': '64rem',
@@ -24,6 +25,7 @@ const config: Config = {
       height: {
         '104': '26rem',
         '128': '32rem',
+        '140': '35rem',
         '200': '50rem',
         '240': '60rem',
         '336': '84rem',
