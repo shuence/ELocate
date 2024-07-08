@@ -25,7 +25,6 @@ WORKDIR /app
 
 # Install production dependencies
 COPY package.json ./
-RUN npm ci --only=production
 
 # Copy the built application from the builder stage
 COPY --from=builder /app/.next ./.next
