@@ -5,7 +5,7 @@ FROM node:18-alpine AS builder
 WORKDIR /app
 
 # Install dependencies
-COPY package.json package-lock.json ./
+COPY package.json ./
 RUN npm ci
 
 # Copy the rest of the application code
@@ -24,7 +24,7 @@ ENV NODE_ENV=production
 WORKDIR /app
 
 # Install production dependencies
-COPY package.json package-lock.json ./
+COPY package.json ./
 RUN npm ci --only=production
 
 # Copy the built application from the builder stage
