@@ -8,11 +8,11 @@ const About = () => {
     <section className="section features" id="features" aria-label="features">
       <div className="container mx-auto px-4 text-center">
         <p className="section-subtitle font-bold text-gray-700 mb-2">
-        -About ELocate-
+        -About USSR-
         </p>
 
         <h2 className=" text-4xl section-title font-bold text-black mb-4">
-        Revolutionizing E-Waste Locator and Management
+        Revolutionizing E-Waste Recyle
         </h2>
 
         <div className=" mx-auto px-4 py-8">
