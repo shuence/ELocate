@@ -58,11 +58,11 @@ const HeroSection: React.FC = () => {
           </p>
 
           <div className="flex flex-row md:flex-row items-center justify-center md:justify-start sm:space-y-0 md:space-x-4 mb-10">
-            <Link href="/recycle" className="btn btn-primary mr-4">
-              Start Recycling
-            </Link>
             <Link href="/e-facilities" className="btn btn-primary mr-4">
               Locate Facility
+            </Link>
+            <Link href="/recycle" className="btn btn-primary mr-4">
+              Start Recycling
             </Link>
 
             <Link href="#" className="flex items-center text-primary">

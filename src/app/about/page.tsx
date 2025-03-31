@@ -12,7 +12,7 @@ const Page = () => {
         exit={{ opacity: 0, x: -20 }}
         transition={{ duration: 0.5 }}
       >
-        <div className="md:mt-20 mt-8 pt-8">
+        <div className="md:mt-20 mt-12 pt-8">
           <About />
         </div>
       </motion.div>
