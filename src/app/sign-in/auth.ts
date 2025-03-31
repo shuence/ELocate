@@ -25,14 +25,23 @@ export const isAuthenticated = () => {
 
 export const setUser = (user: any): void => {
   if (isLocalStorageAvailable) {
-    localStorage.setItem('user', JSON.stringify(user));
+    try {
+      localStorage.setItem('user', JSON.stringify(user));
+    } catch (error) {
+      console.error('Error setting user:', error);
+    }
   }
 };
 
 export const getUser = (): any | null => {
   if (isLocalStorageAvailable) {
-    const user = localStorage.getItem('user');
-    return user ? JSON.parse(user) : null;
+    try {
+      const user = localStorage.getItem('user');
+      return user ? JSON.parse(user) : null;
+    } catch (error) {
+      console.error('Error parsing user data:', error);
+      return null;
+    }
   }
   return null;
 };

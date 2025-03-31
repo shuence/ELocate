@@ -8,9 +8,9 @@ import { IonIcon } from "@ionic/react";
 import { play } from "ionicons/icons";
 
 const solutions = [
-  "Recycling Solution",
-  "Disposible Solution",
-  "Facility Locator",
+  "Recycling Revolution",
+  "Sustainable Disposal",
+  "Smart Facility Finder",
 ];
 
 const solutionVariants = {
@@ -36,11 +36,11 @@ const HeroSection: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="hero-content text-center">
           <p className="mb-4 hero-subtitle has-before">
-            Welcome to ELocate
+            Welcome to ELocate — Powering a Greener Tomorrow
           </p>
 
           <h1 className="h1 hero-title text-center md:text-start font-bold mb-6">
-            Your technology partner for Innovative and Impactful 
+            Your Strategic Partner for Innovative and High-Impact 
             <br /> <motion.span
             className="text-go-green pt-2"
               variants={solutionVariants}
@@ -54,15 +54,16 @@ const HeroSection: React.FC = () => {
           </h1>
 
           <p className="text-gray-700 mb-8 text-center md:text-start">
-          ELocate: Transforming E-Waste Management. Find E-waste facilities effortlessly with our platform. Your key to responsible recycling and sustainability.
+            ELocate: Revolutionizing E-Waste Management for a Sustainable Future. Discover nearby e-waste facilities with precision and ease. 
+            Your gateway to responsible recycling practices and environmental stewardship — one device at a time.
           </p>
 
           <div className="flex flex-row md:flex-row items-center justify-center md:justify-start sm:space-y-0 md:space-x-4 mb-10">
             <Link href="/e-facilities" className="btn btn-primary mr-4">
-              Locate Facility
+              Find Nearest Facility
             </Link>
             <Link href="/recycle" className="btn btn-primary mr-4">
-              Start Recycling
+              Start Recycling Today
             </Link>
 
             <Link href="#" className="flex items-center text-primary">

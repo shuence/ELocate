@@ -6,34 +6,34 @@ import { RiArrowDropDownLine, RiArrowDropUpLine } from "react-icons/ri";
 const FAQ = () => {
     const faqData = [
         {
-          question: "How do I locate e-waste recycling facilities using ELocate?",
+          question: "How does ELocate help me find e-waste recycling facilities?",
           answer:
-            "ELocate provides a dedicated facility locator page where you can easily find the nearest e-waste recycling facilities. Simply use the map feature to explore facilities in your area and get detailed information.",
+            "ELocate's intelligent facility locator uses geolocation technology to instantly identify certified e-waste recycling centers nearest to you. Simply access our interactive map interface, enter your location, and discover detailed information about each facility including operational hours, accepted materials, certification status, and user ratings—all designed to make responsible e-waste disposal effortless and convenient.",
         },
         {
-          question: "Is the information about e-waste facilities on ELocate verified?",
+          question: "How does ELocate verify the facilities listed on the platform?",
           answer:
-            "Yes, ELocate ensures that the information about e-waste recycling facilities is verified. This verification process helps users trust the accuracy and reliability of the facility details provided on the platform.",
+            "We implement a rigorous multi-step verification process for all facilities on our platform. Each facility undergoes credential validation, certification verification, operational compliance checks, and ongoing monitoring. We also incorporate user feedback and regular audits to maintain the highest standards of accuracy and reliability—ensuring you can trust every facility recommendation we provide.",
         },
         {
-          question: "Can I book the recycling of my e-waste through ELocate?",
+          question: "Can I schedule the pickup and recycling of my e-waste through ELocate?",
           answer:
-            "Absolutely! ELocate offers a user-friendly booking system that allows you to schedule the recycling of your e-waste. Choose the facility, select a convenient pickup date and time, and contribute to sustainable e-waste management.",
+            "Absolutely! Our streamlined booking system allows you to schedule e-waste pickups with just a few clicks. Select your preferred facility, choose from available time slots, specify the type and quantity of e-waste, and receive immediate confirmation. Many of our partner facilities also offer special incentives for ELocate users, making responsible recycling not just convenient but rewarding as well.",
         },
         {
-          question: "What educational resources are available on ELocate?",
+          question: "What kind of educational resources does ELocate offer?",
           answer:
-            "ELocate features an education section with blogs and informative content to raise awareness about the impact of e-waste. Explore articles that highlight the importance of responsible e-waste recycling and its positive effects on the environment.",
+            "ELocate features a comprehensive knowledge hub with expert-curated content including in-depth articles, video tutorials, infographics, and case studies. Our educational resources cover topics ranging from the environmental impact of e-waste to best practices in electronics lifecycle management, emerging recycling technologies, and regulatory compliance. We regularly update our content to reflect the latest research and innovations in sustainable e-waste management.",
         },
         {
-          question: "How can I stay updated on the latest rules and regulations regarding e-waste management?",
+          question: "How can I stay updated on changing e-waste regulations and compliance requirements?",
           answer:
-            "ELocate provides a dedicated section that lists the latest government rules and regulations related to e-waste management. Stay informed about the legal aspects of e-waste disposal and contribute to a greener environment.",
+            "Our dedicated regulatory center maintains a real-time database of local, national, and international e-waste regulations. Subscribers receive customized compliance alerts based on their location and business needs. Our platform also provides simplified explanations of complex regulatory frameworks, practical compliance guides, and access to compliance certification pathways—turning regulatory complexity into actionable insights.",
         },
         {
-          question: "Is there a newsletter for ELocate users?",
+          question: "What additional benefits do I get by subscribing to the ELocate newsletter?",
           answer:
-            "Yes, ELocate offers a newsletter signup feature. By subscribing to the newsletter, you'll receive updates, promotions, and valuable information about e-waste recycling. Stay connected with the latest news and initiatives in the e-waste management sector.",
+            "Our newsletter subscribers gain exclusive access to premium content including expert interviews, early notification of recycling events, special recycling incentive programs, and industry trend analyses. You'll also receive personalized recycling recommendations, invitations to virtual and in-person sustainability workshops, and opportunities to connect with our growing community of environmentally conscious individuals and organizations. Join thousands of subscribers already benefiting from our curated insights.",
         },
       ];
       
@@ -53,12 +53,13 @@ const FAQ = () => {
       <Container >
         <Row>
           <Col>
-            <h2 className="text-center text-3xl">Frequently Asked Questions</h2>
+            <h2 className="text-center text-3xl font-bold mb-2">Frequently Asked Questions</h2>
+            <p className="text-center text-gray-600 mb-8">Everything you need to know about ELocate and responsible e-waste management</p>
             <div className="mt-8">
               {faqData.map((item, index) => (
                 <div
-                  className={`mb-6 p-8 rounded-xl shadow-md ${
-                    activeQuestion === index ? "active" : ""
+                  className={`mb-6 p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 cursor-pointer ${
+                    activeQuestion === index ? "bg-gray-50 active" : ""
                   }`}
                   key={index}
                   onClick={() => toggleQuestion(index)}
@@ -76,7 +77,7 @@ const FAQ = () => {
                     </h4>
                   </div>
                   {activeQuestion === index && (
-                    <p className="text-xl mt-4 ">{item.answer}</p>
+                    <p className="text-xl mt-4 leading-relaxed">{item.answer}</p>
                   )}
                 </div>
               ))}

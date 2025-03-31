@@ -1,8 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  presets: ['@next/babel'],
     images: {
-        domains: ['avatars.githubusercontent.com'], 
+        domains: ['avatars.githubusercontent.com', 'images.unsplash.com'], 
       },
 }
 

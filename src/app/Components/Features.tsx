@@ -4,39 +4,39 @@ import AboutUs from "../about/About";
 const elocateFeatures = [
   {
     number: "01",
-    title: "Comprehensive E-Waste Collection",
+    title: "State-of-the-Art E-Waste Collection Network",
     description:
-      "A network of reliable and certified e-waste collection facilities to ensure responsible disposal.",
+      "Access our extensive network of verified and certified e-waste collection facilities, ensuring safe, responsible, and environmentally-conscious disposal for all electronic devices.",
   },
   {
     number: "02",
-    title: "Educational Resources",
+    title: "Comprehensive Educational Resources",
     description:
-      "Detailed information about e-waste and collection facilities to empower users with knowledge.",
+      "Empower yourself with our knowledge hub containing expert insights, best practices, and the latest research on e-waste management and environmental sustainability.",
   },
   {
     number: "03",
-    title: "User-Friendly Interface",
+    title: "Intuitive User Experience",
     description:
-      "A dynamic and easy-to-use platform for individuals and businesses seeking e-waste solutions.",
+      "Navigate our sophisticated yet user-friendly platform designed for individuals, businesses, and organizations seeking efficient and effective e-waste solutions.",
   },
   {
     number: "04",
-    title: "Interactive Chatbot",
+    title: "AI-Powered Smart Assistant",
     description:
-      "An intelligent chatbot for immediate access to FAQs and educational resources, fostering awareness.",
+      "Get instant answers to your questions with our intelligent virtual assistant, providing 24/7 access to educational resources and personalized guidance on responsible e-waste management.",
   },
   {
     number: "05",
-    title: "Streamlined Booking System",
+    title: "Reward-Based Booking System",
     description:
-      "Efficient booking system with a credit mechanism to encourage responsible disposal practices.",
+      "Benefit from our innovative credit mechanism that incentivizes responsible disposal practices, making sustainability rewarding for both individuals and businesses.",
   },
   {
     number: "06",
-    title: "Facility Management Dashboard",
+    title: "Advanced Facility Management Dashboard",
     description:
-      "Comprehensive dashboard for facility owners to manage bookings and credits seamlessly.",
+      "For facility owners: gain access to our comprehensive management suite with real-time analytics, booking oversight, and integrated credit tracking—all in one streamlined interface.",
   },
 ];
 

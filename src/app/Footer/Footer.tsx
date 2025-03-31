@@ -48,10 +48,10 @@ const Footer = () => {
         setFormData({
           email: "",
         });
-        toast.success("Email Submitted Successfully");
+        toast.success("Subscription Confirmed! Welcome to the ELocate community.");
       })
       .catch((error: { text: any }) => {
-        toast.error("Something Went Wrong");
+        toast.error("Unable to process your request. Please try again.");
       });
   };
   return (
@@ -75,20 +75,20 @@ const Footer = () => {
             <Link href="/">
               <Image
                 src={logo}
-                alt="Elocate"
+                alt="ELocate - E-waste Facility Locator"
                 width={100}
                 height={100}
                 className="logo mx-auto md:mx-0"
               />
             </Link>
             <p className="footer-text">
-            ELocate: Transforming E-Waste Management. Find E-waste facilities effortlessly with our platform. Your key to responsible recycling and sustainability.
+              ELocate: Revolutionizing e-waste management through technological innovation. Our platform connects you with certified recycling facilities, empowering your journey toward environmental responsibility and sustainable electronics disposal.
             </p>
             <form onSubmit={SendMsg} className="newsletter-form mb-0 md:mb-4">
               <input
                 type="email"
                 name="email"
-                placeholder="Enter your email"
+                placeholder="Join our sustainability newsletter"
                 className="email-field"
                 value={formData.email}
                 onChange={handleInputChange}
@@ -105,39 +105,39 @@ const Footer = () => {
           </div>
           <ul className="footer-list">
             <li>
-              <p className="footer-list-title">Our Services</p>
+              <p className="footer-list-title">Recycling Solutions</p>
             </li>
             <li>
               <Link href="/recycle/smartphone" className="footer-link">
-                Smartphone Recycle
+                Smartphone Recycling
               </Link>
             </li>
             <li>
               <Link href="/recycle/laptop" className="footer-link">
-                Laptop Recycle
+                Laptop & Computer Recycling
               </Link>
             </li>
             <li>
               <Link href="/recycle/accessories" className="footer-link">
-              Accessories Recycle
+              Electronics Accessories
               </Link>
             </li>
 
             <li>
               <Link href="/recycle/tv" className="footer-link">
-                Television Recycle
+                Television & Display Recycling
               </Link>
             </li>
 
             <li>
               <Link href="/recycle/refrigerator" className="footer-link">
-              Refrigerator Recycle
+              Refrigerator & Cooling Appliances
               </Link>
             </li>
 
             <li>
             <Link href="/recycle/washing-machine" className="footer-link">
-                Washing Machine Recycle
+                Household Appliance Recycling
               </Link>
             </li>
 
@@ -145,51 +145,51 @@ const Footer = () => {
           </ul>
           <ul className="footer-list">
             <li>
-              <p className="footer-list-title">Company</p>
+              <p className="footer-list-title">ELocate Platform</p>
             </li>
             <li>
               <Link href="/aboutus" className="footer-link">
-                About us
+                Our Mission & Vision
               </Link>
             </li>
 
             <li>
               <Link href="/education" className="footer-link">
-                Education
+                E-Waste Education Center
               </Link>
             </li>
 
             <li>
               <Link href="/facilities" className="footer-link">
-                E-waste Facilities
+                Certified Recycling Network
               </Link>
             </li>
 
             <li>
               <Link href="/news" className="footer-link">
-                Latest News
+                Sustainability News
               </Link>
             </li>
 
             <li>
               <Link href="/contactus" className="footer-link">
-                Contact Us
+                Get In Touch
               </Link>
             </li>
             <li>
               <Link href="/blogs" className="footer-link">
-                Our Blog
+                Insights & Resources
               </Link>
             </li>
           </ul>
           <ul className="footer-list">
             <li>
-              <p className="footer-list-title">Contact Us</p>
+              <p className="footer-list-title">Connect With Us</p>
             </li>
             <li className="footer-item">
               <IonIcon icon={location} aria-hidden="true" className="w-8 h-8 mt-4"></IonIcon>
               <address className="contact-link address">
-                Chh.Sambhajinagar,<br />Maharashtra,  431001
+                Chh.Sambhajinagar,<br />Maharashtra, India 431001
               </address>
             </li>
             <li className="footer-item">
@@ -200,7 +200,7 @@ const Footer = () => {
                 href="tel:+911234567890"
                 className="contact-link"
               >
-                +911234567890
+                +91 123 456 7890
               </Link>
             </li>
             <li className="footer-item">
@@ -211,7 +211,7 @@ const Footer = () => {
                 href="mailto:contact@elocate.com"
                 className="contact-link"
               >
-                contact@elocate.com{" "}
+                contact@elocate.com
               </Link>
             </li>
             <li className="footer-item">
@@ -221,7 +221,7 @@ const Footer = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     href="#"
-                    aria-label="linkedin"
+                    aria-label="Connect with ELocate on LinkedIn"
                     className="social-link"
                   >
                     <IonIcon icon={logoLinkedin}></IonIcon>
@@ -232,7 +232,7 @@ const Footer = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     href="#"
-                    aria-label="Instagram"
+                    aria-label="Follow ELocate on Instagram"
                     className="social-link"
                   >
                     <IonIcon icon={logoInstagram}></IonIcon>
@@ -243,7 +243,7 @@ const Footer = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     href="#"
-                    aria-label="Twitter"
+                    aria-label="Follow ELocate on Twitter"
                     className="social-link"
                   >
                     <IonIcon icon={logoTwitter}></IonIcon>
@@ -254,7 +254,7 @@ const Footer = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     href="#"
-                    aria-label="Whatsapp"
+                    aria-label="Contact ELocate on WhatsApp"
                     className="social-link"
                   >
                     <IonIcon icon={logoWhatsapp}></IonIcon>
@@ -270,7 +270,7 @@ const Footer = () => {
         <p className="copyright">
             &copy; 2023 ELocate | All Rights Reserved by{" "}
             <Link href="#" className="copyright-link">
-              Spam Byte
+              Team Spam Byte
             </Link>
           </p>
           <ul className="footer-bottom-list">
@@ -281,7 +281,7 @@ const Footer = () => {
             </li>
             <li>
               <Link href="/termsandservices" className="footer-bottom-link">
-                Terms of Use
+                Terms of Service
               </Link>
             </li>
           </ul>

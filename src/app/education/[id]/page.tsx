@@ -3,7 +3,13 @@ import React from "react";
 import { motion } from "framer-motion";
 import Blog from "./Blog";
 
-const Page = () => {
+interface PageProps {
+  params: {
+    id: string;
+  };
+}
+
+const Page = ({ params }: PageProps) => {
   return (
     <>
       <motion.div
@@ -13,7 +19,7 @@ const Page = () => {
         transition={{ duration: 0.5 }}
       >
         <div className="mt-24 md:mt-20 md:pt-8">
-          <Blog />
+          <Blog params={params} />
         </div>
       </motion.div>
     </>

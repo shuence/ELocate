@@ -80,9 +80,27 @@
 
 }
 
+/* Main content padding to accommodate fixed header */
+main, 
+.section,
+.container,
+[id]:not(#header):not(.header) {
+  scroll-margin-top: 100px;
+}
 
+body {
+  /* Add padding to push content below the fixed header */
+  padding-top: 80px;
+}
 
-
+/* Page-specific content adjustments */
+.e-facilities-container,
+.recycle-container,
+.education-container,
+.rules-container,
+.contactus-container {
+  padding-top: 20px;
+}
 
 /*-----------------------------------*\
   #RESET
@@ -461,7 +479,6 @@ body {
 
 
 
-
 /*-----------------------------------*\
   #HERO
 \*-----------------------------------*/
@@ -553,7 +570,6 @@ body {
   background-position: center;
   z-index: -1;
 }
-
 
 
 
@@ -716,7 +732,6 @@ body {
 
 
 
-
 /*-----------------------------------*\
   #FAQ
 \*-----------------------------------*/
@@ -793,7 +808,6 @@ body {
 .faq-card .card-content p { margin-block: 15px; }
 
 .faq-card .card-action.active + .card-content { max-height: 500px; }
-
 
 
 
@@ -922,7 +936,7 @@ body {
 
 .footer-bottom-list {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start; /* Changed from 'start' to 'flex-start' for better browser support */
   gap: 20px;
 }
 
@@ -932,7 +946,6 @@ body {
 }
 
 .footer-bottom-link:is(:hover, :focus) { color: var(--go-green); }
-
 
 
 
@@ -1001,7 +1014,7 @@ body {
   }
 
   .footer-list{
-    text-align: center;
+    text-align: start;
   }
 
 }
@@ -1073,7 +1086,6 @@ body {
   .footer-top .container { grid-template-columns: 1fr 1fr; }
 
 }
-
 
 
 
@@ -1209,7 +1221,6 @@ body {
   .copyright { margin-block-end: 0; }
 
 }
-
 
 
 
