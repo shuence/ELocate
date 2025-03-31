@@ -4,7 +4,10 @@ E waste Facility Locator & Recycling Platform ♻️
 
 A i-nnovate Hackathon by intelliswift Finalist Project **Team Spam Byte From Deogiri Institute of Engineering And Management Studies Chh. Sambhajinagar.**
 
+**Update** : Won The Position of **Second Runner** Up & 30 K price in hackathon at [**i-nnovate Hackathon 2023**](https://www.intelliswift.com/innovate-hackathon) By [Intelliswift Software Pvt. Ltd](https://www.intelliswift.com/) at **Symbiosis International University**
+
 Click on link below to have intro to ELocate :
+
 [Intro To Elocate Video in Short But In Detail](https://youtu.be/rEyCnsLWbJU)
 
 
